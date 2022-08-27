@@ -4,6 +4,7 @@ import { View, StyleSheet } from "react-native";
 import { AppColors } from "../../style";
 
 import { Text } from "../../components/Text";
+import { Button } from "../../components/Button";
 
 const Login = () => {
     return (
@@ -21,6 +22,8 @@ const Login = () => {
             <Text color={AppColors.PrimaryGray} leftSpacing={30} size={17} bottomSpacing={17}>
                 Hi there ! Nice to see you again.
             </Text>
+
+            <Button text="Sign In" containerStyles={styles.btn} />
         </View>
     );
 };
@@ -36,6 +39,9 @@ const styles = StyleSheet.create({
         borderRadius: 130 / 2,
         alignSelf: "center",
         marginTop: 40
+    },
+    btn: {
+        marginHorizontal: 30
     }
 });
 
