@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     }
 });
 
-Text.PropTypes = {
+Text.propTypes = {
     size: PropTypes.number
 };
 
