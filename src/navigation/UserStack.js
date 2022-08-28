@@ -10,16 +10,18 @@ const defaultOptions = { headerShown: false };
 import MedicationType from "../screens/MedicationType/MedicationType";
 import ActivateDevice from "../screens/ActivateDevice/ActivateDevice";
 import Connect from "../screens/Connect/Connect";
+import Profile from "../screens/Profile/Profile";
 
 const routes = [
     { name: APP_ROUTES.MEDICATION_TYPE, component: MedicationType },
     { name: APP_ROUTES.ACTIVATE_DEVICE, component: ActivateDevice },
-    { name: APP_ROUTES.CONNECT, component: Connect }
+    { name: APP_ROUTES.CONNECT, component: Connect },
+    { name: APP_ROUTES.PROFILE, component: Profile }
 ];
 
 export default () => {
     return (
-        <Stack.Navigator initialRouteName={APP_ROUTES.CONNECT}>
+        <Stack.Navigator initialRouteName={APP_ROUTES.PROFILE}>
             {routes.map((route, index) => {
                 const { component, name, options = {} } = route;
                 return (

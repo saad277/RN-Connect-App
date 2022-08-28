@@ -3,5 +3,6 @@ export const APP_ROUTES = {
     SIGNUP: "SignUp",
     MEDICATION_TYPE: "MedicationType",
     ACTIVATE_DEVICE: "ActivateDevice",
-    CONNECT: "Connect"
+    CONNECT: "Connect",
+    PROFILE: "Profile"
 };
