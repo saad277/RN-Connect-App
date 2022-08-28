@@ -15,6 +15,7 @@ const Text = (props) => {
         topSpacing = 0,
         bottomSpacing = 0,
         letterSpacing = 0,
+        horizontalSpacing = 0,
         centered = undefined,
         end = undefined
     } = props;
@@ -29,6 +30,7 @@ const Text = (props) => {
                 ...(!!topSpacing && { marginTop: topSpacing }),
                 ...(!!bottomSpacing && { marginBottom: bottomSpacing }),
                 ...(!!letterSpacing && { letterSpacing }),
+                ...(!!horizontalSpacing && { marginHorizontal: horizontalSpacing }),
                 ...(centered && styles.centered),
                 ...(end && styles.end),
                 ...style

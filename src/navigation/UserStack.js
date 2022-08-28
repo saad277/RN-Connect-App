@@ -2,17 +2,14 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import { APP_ROUTES } from "../routes";
-import Login from "../screens/Login/Login";
-import SignUp from "../screens/SignUp/SignUp";
 
 const Stack = createStackNavigator();
 
 const defaultOptions = { headerShown: false };
 
-const routes = [
-    { name: APP_ROUTES.LOGIN, component: Login },
-    { name: APP_ROUTES.SIGNUP, component: SignUp }
-];
+import MedicationType from "../screens/MedicationType/MedicationType";
+
+const routes = [{ name: APP_ROUTES.MEDICATION_TYPE, component: MedicationType }];
 
 export default () => {
     return (
@@ -21,7 +18,7 @@ export default () => {
                 const { component, name, options = {} } = route;
                 return (
                     <Stack.Screen
-                        key={"auth-screen-" + index}
+                        key={"user-screen-" + index}
                         component={component}
                         name={name}
                         options={{ ...defaultOptions, ...options }}

@@ -15,7 +15,7 @@ const Login = (props) => {
     const [password, setPassword] = useState("");
 
     return (
-        <ScrollView>
+        <ScrollView keyboardShouldPersistTaps="handled" bounces={false}>
             <View style={styles.container}>
                 <View style={styles.logo} />
                 <Text

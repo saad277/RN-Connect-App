@@ -4,6 +4,7 @@ const AppColors = {
     Red: "#FF0000",
     PrimaryBlue: "#6ea3fc",
     DarkBlue: "#2d74a9",
+    LightBlue: "#dce8fe",
     PrimaryGray: "#acafb2"
 };
 

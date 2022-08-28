@@ -1,4 +1,5 @@
 export const APP_ROUTES = {
     LOGIN: "Login",
-    SIGNUP: "SignUp"
+    SIGNUP: "SignUp",
+    MEDICATION_TYPE: "MedicationType"
 };

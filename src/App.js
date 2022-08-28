@@ -4,13 +4,13 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import { NavigationTheme, AppColors } from "./style";
 
-import { AuthStack } from "./navigation";
+import { AuthStack, UserStack } from "./navigation";
 
 const App = () => {
     return (
         <NavigationContainer theme={NavigationTheme}>
             <StatusBar backgroundColor={AppColors.PrimaryBlue} />
-            <AuthStack />
+            <UserStack />
         </NavigationContainer>
     );
 };

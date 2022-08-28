@@ -1,3 +1,4 @@
 import AuthStack from "./AuthStack";
+import UserStack from "./UserStack";
 
-export { AuthStack };
+export { AuthStack, UserStack };
