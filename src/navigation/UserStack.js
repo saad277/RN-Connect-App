@@ -8,12 +8,16 @@ const Stack = createStackNavigator();
 const defaultOptions = { headerShown: false };
 
 import MedicationType from "../screens/MedicationType/MedicationType";
+import ActivateDevice from "../screens/ActivateDevice/ActivateDevice";
 
-const routes = [{ name: APP_ROUTES.MEDICATION_TYPE, component: MedicationType }];
+const routes = [
+    { name: APP_ROUTES.MEDICATION_TYPE, component: MedicationType },
+    { name: APP_ROUTES.ACTIVATE_DEVICE, component: ActivateDevice }
+];
 
 export default () => {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName={APP_ROUTES.ACTIVATE_DEVICE}>
             {routes.map((route, index) => {
                 const { component, name, options = {} } = route;
                 return (
