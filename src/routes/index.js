@@ -4,5 +4,6 @@ export const APP_ROUTES = {
     MEDICATION_TYPE: "MedicationType",
     ACTIVATE_DEVICE: "ActivateDevice",
     CONNECT: "Connect",
-    PROFILE: "Profile"
+    PROFILE: "Profile",
+    HOME: "Home"
 };

@@ -7,6 +7,7 @@ const Stack = createStackNavigator();
 
 const defaultOptions = { headerShown: false };
 
+import Home from "../screens/Home/Home";
 import MedicationType from "../screens/MedicationType/MedicationType";
 import ActivateDevice from "../screens/ActivateDevice/ActivateDevice";
 import Connect from "../screens/Connect/Connect";
@@ -16,12 +17,13 @@ const routes = [
     { name: APP_ROUTES.MEDICATION_TYPE, component: MedicationType },
     { name: APP_ROUTES.ACTIVATE_DEVICE, component: ActivateDevice },
     { name: APP_ROUTES.CONNECT, component: Connect },
-    { name: APP_ROUTES.PROFILE, component: Profile }
+    { name: APP_ROUTES.PROFILE, component: Profile },
+    { name: APP_ROUTES.HOME, component: Home }
 ];
 
 export default () => {
     return (
-        <Stack.Navigator initialRouteName={APP_ROUTES.PROFILE}>
+        <Stack.Navigator initialRouteName={APP_ROUTES.HOME}>
             {routes.map((route, index) => {
                 const { component, name, options = {} } = route;
                 return (

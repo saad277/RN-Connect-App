@@ -34,7 +34,11 @@ const ListItem = (props) => {
 
 const Profile = () => {
     return (
-        <ScrollView keyboardShouldPersistTaps="handled" bounces={false}>
+        <ScrollView
+            keyboardShouldPersistTaps="handled"
+            bounces={false}
+            showsVerticalScrollIndicator={false}
+        >
             <View style={styles.container}>
                 <View style={styles.wrapper}>
                     <Image source={require("../../assets/avatar.png")} style={styles.avatar} />

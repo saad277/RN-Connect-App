@@ -46,7 +46,11 @@ const Card = () => {
 
 const MedicationType = () => {
     return (
-        <ScrollView>
+        <ScrollView
+            keyboardShouldPersistTaps="handled"
+            bounces={false}
+            showsVerticalScrollIndicator={false}
+        >
             <View style={styles.container}>
                 <Header title="Add device" />
                 <Text
