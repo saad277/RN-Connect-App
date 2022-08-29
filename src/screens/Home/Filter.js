@@ -14,7 +14,7 @@ const FILTERS = {
 const Filter = (props) => {
     const { style = {} } = props;
 
-    const [selected, setSelected] = useState(null);
+    const [selected, setSelected] = useState(FILTERS.DAILY);
 
     return (
         <View style={[styles.wrapper, style]}>
