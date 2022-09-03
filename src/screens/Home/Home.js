@@ -5,6 +5,7 @@ import { AppColors } from "../../style";
 
 import { Text } from "../../components/Text";
 import { Icon } from "../../components/Icon";
+import { ProgressCircle } from "../../components/ProgressCircle";
 import Filter from "./Filter";
 
 const PeriodItem = () => {
@@ -135,6 +136,33 @@ const Home = () => {
                     </Text>
                 </View>
             </View>
+
+            <Text color={AppColors.PrimaryBlue} leftSpacing={20} topSpacing={20}>
+                REGULARS
+            </Text>
+            <View style={styles.regulars}>
+                <ProgressCircle
+                    percentage={70}
+                    radius={25}
+                    strokeWidth={6}
+                    style={{ marginTop: 14 }}
+                />
+                <View
+                    style={{
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        flex: 1
+                    }}
+                >
+                    <Text color={AppColors.DarkBlue} size={15} topSpacing={14} leftSpacing={14}>
+                        Average Usage
+                    </Text>
+                    <Text color={AppColors.DarkBlue} size={24} rightSpacing={20} topSpacing={14}>
+                        3.5
+                    </Text>
+                </View>
+            </View>
         </ScrollView>
     );
 };
@@ -215,6 +243,15 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginRight: 20,
         marginVertical: 10
+    },
+    regulars: {
+        backgroundColor: AppColors.LightBlue,
+        marginHorizontal: 20,
+        marginBottom: 4,
+        borderTopLeftRadius: 9,
+        borderTopRightRadius: 9,
+        flexDirection: "row",
+        paddingLeft: 14
     }
 });
 
