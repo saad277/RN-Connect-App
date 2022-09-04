@@ -7,6 +7,7 @@ import { Text } from "../../components/Text";
 import { Icon } from "../../components/Icon";
 import { ProgressCircle } from "../../components/ProgressCircle";
 import Filter from "./Filter";
+import MainGraph from "./MainGraph";
 
 const PeriodItem = () => {
     return (
@@ -62,6 +63,8 @@ const Home = () => {
                         onPress={() => {}}
                     />
                 </View>
+
+                <MainGraph />
 
                 <Text color={AppColors.PrimaryBlue} leftSpacing={20} topSpacing={20}>
                     RESCUE
