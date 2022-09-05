@@ -236,19 +236,21 @@ export default class ChartBuilder {
                     >
                         {label}
                     </Text>
-                    <Text
-                        origin={`${x}, ${y}`}
-                        x={x}
-                        y={y+20}
-                        rotation={rotation}
-                        textAnchor={"middle"}
-                        fontFamily={fontFamily}
-                        fontSize={fontSize}
-                        fontWeight={fontWeight}
-                        fill={color}
-                    >
-                        {this.sublabels[i]}
-                    </Text>
+                    {!!this.sublabels[i] && (
+                        <Text
+                            origin={`${x}, ${y}`}
+                            x={x}
+                            y={y + 20}
+                            rotation={rotation}
+                            textAnchor={"middle"}
+                            fontFamily={fontFamily}
+                            fontSize={fontSize}
+                            fontWeight={fontWeight}
+                            fill={color}
+                        >
+                            {this.sublabels[i]}
+                        </Text>
+                    )}
                 </G>
             );
         });

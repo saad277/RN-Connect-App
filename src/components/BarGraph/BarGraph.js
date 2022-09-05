@@ -48,16 +48,25 @@ const BarChart = ({
                         height={barHeight < 0 ? 0 : barHeight}
                         fill={barColor}
                     />
-                    <Text x={20} y={20}>
+                    {/* <Text
+                        x={
+                            (i * chartBuilder.yLabelSlotWidth +
+                            slotGap +
+                            chartBuilder.leftAlignedXAxisLabelWidth)+8
+                        }
+                        y={(baseHeight - barHeight)-12}
+                        textAnchor={"middle"}
+                        fill={"#000"}
+                    >
                         100%
-                    </Text>
+                    </Text> */}
                 </G>
             );
         });
     };
     return (
         <View style={style}>
-            <Svg height={height+20} width={width}>
+            <Svg height={height + 30} width={width}>
                 <G>
                     {baseConfig.hasXAxisBackgroundLines !== false
                         ? chartBuilder.renderXAxisLines()
