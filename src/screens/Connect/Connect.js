@@ -1,13 +1,45 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, StyleSheet, Alert } from "react-native";
 
 import { AppColors } from "../../style";
 
 import { Header } from "../../components/Header";
 import { Text } from "../../components/Text";
 import { Button } from "../../components/Button";
+import { BluetoothService, BluetoothStates } from "../../services/BluetoothService";
+import BluetoothStateManager from "react-native-bluetooth-state-manager";
 
 const Connect = () => {
+    const [isEnabled, setIsEnabled] = useState(false);
+
+    useEffect(() => {
+        const init = () => {
+            BluetoothService.getState().then((state) => {
+                if (state === BluetoothStates.PoweredOn) {
+                    setIsEnabled(true);
+                }
+            });
+        };
+        init();
+    }, []);
+
+    useEffect(() => {
+        BluetoothStateManager.onStateChange((bluetoothState) => {
+            console.log(bluetoothState);
+            if (bluetoothState === BluetoothStates.PoweredOn) {
+                setIsEnabled(true);
+            } else {
+                setIsEnabled(false);
+            }
+        }, true);
+    }, []);
+
+    const handleConnect = () => {
+        if (!isEnabled) {
+            Alert.alert("Please enable bluetooth in settings");
+        }
+    };
+
     return (
         <View style={styles.container}>
             <View>
@@ -49,7 +81,7 @@ const Connect = () => {
 
             <View style={styles.circle} />
 
-            <Button text="Connect" containerStyles={styles.btn} />
+            <Button text="Connect" containerStyles={styles.btn} onPress={handleConnect} />
         </View>
     );
 };

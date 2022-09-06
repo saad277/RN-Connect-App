@@ -1,8 +1,9 @@
 import React from "react";
-import { View, StyleSheet, ScrollView, SafeAreaView } from "react-native";
+import { View, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } from "react-native";
 
 import { AppColors } from "../../style";
 
+import { APP_ROUTES } from "../../routes";
 import { Text } from "../../components/Text";
 import { Icon } from "../../components/Icon";
 import { ProgressCircle } from "../../components/ProgressCircle";
@@ -24,7 +25,9 @@ const PeriodItem = () => {
     );
 };
 
-const Home = () => {
+const Home = (props) => {
+    const { navigation } = props;
+
     return (
         <SafeAreaView>
             <ScrollView
@@ -42,7 +45,18 @@ const Home = () => {
                     <Text color={AppColors.PrimaryBlue} size={17}>
                         AIR4ME
                     </Text>
-                    <View />
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate(APP_ROUTES.ACTIVATE_DEVICE)}
+                    >
+                        <View
+                            style={{
+                                backgroundColor: AppColors.LightBlue,
+                                width: 24,
+                                height: 24,
+                                borderRadius: 24 / 2
+                            }}
+                        />
+                    </TouchableOpacity>
                 </View>
                 <Filter style={styles.filters} />
 

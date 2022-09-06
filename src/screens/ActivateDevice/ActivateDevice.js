@@ -3,11 +3,14 @@ import { View, StyleSheet } from "react-native";
 
 import { AppColors } from "../../style";
 
+import { APP_ROUTES } from "../../routes";
 import { Header } from "../../components/Header";
 import { Text } from "../../components/Text";
 import { Button } from "../../components/Button";
 
-const ActivateDevice = () => {
+const ActivateDevice = (props) => {
+    const { navigation } = props;
+
     return (
         <View style={styles.container}>
             <View>
@@ -40,7 +43,11 @@ const ActivateDevice = () => {
 
             <View style={styles.circle} />
 
-            <Button text="Got it!" containerStyles={styles.btn} />
+            <Button
+                text="Got it!"
+                containerStyles={styles.btn}
+                onPress={() => navigation.replace(APP_ROUTES.CONNECT)}
+            />
         </View>
     );
 };
