@@ -36,9 +36,9 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Connect app would like to access your bluetooth to connect to other devices</string>
-	<string></string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

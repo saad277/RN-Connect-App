@@ -1,10 +1,8 @@
 import React from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { BarGraph } from "../../components/BarGraph";
 
 import { AppColors } from "../../style";
-
-const screenWidth = Dimensions.get("window").width;
 
 const MainGraph = () => {
     return (
@@ -34,8 +32,6 @@ const MainGraph = () => {
         />
     );
 };
-
-const styles = StyleSheet.create({});
 
 export default MainGraph;
 

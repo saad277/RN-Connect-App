@@ -106,7 +106,8 @@ const Home = (props) => {
                     <View
                         style={{
                             flexDirection: "row",
-                            justifyContent: "space-between"
+                            justifyContent: "space-between",
+                            marginLeft:10
                         }}
                     >
                         <PeriodItem />
@@ -160,6 +161,30 @@ const Home = (props) => {
                         >
                             3.5
                         </Text>
+                    </View>
+                </View>
+
+                <View style={styles.seretide}>
+                    <View
+                        style={{
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                            alignItems: "center"
+                        }}
+                    >
+                        <Text color={AppColors.DarkBlue}>Seretide GSK</Text>
+                        <View style={styles.dot} />
+                    </View>
+                    <View
+                        style={{
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            marginTop: 10
+                        }}
+                    >
+                        <Text color={AppColors.DarkBlue}>Seretide GSK</Text>
+                        <View style={styles.dot} />
                     </View>
                 </View>
             </ScrollView>
@@ -251,8 +276,26 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 9,
         borderTopRightRadius: 9,
         flexDirection: "row",
-        paddingLeft: 14
+        paddingLeft: 19,
+        paddingBottom: 12
+    },
+    seretide: {
+        backgroundColor: AppColors.LightBlue,
+        marginHorizontal: 20,
+        marginBottom: 4,
+        borderBottomLeftRadius: 9,
+        borderBottomRightRadius: 9,
+        paddingHorizontal: 19,
+        paddingBottom: 12,
+        paddingTop: 20
+    },
+    dot: {
+        backgroundColor: AppColors.PrimaryGreen,
+        width: 14,
+        height: 14,
+        borderRadius: 14 / 2
     }
 });
 
 export default Home;
+
