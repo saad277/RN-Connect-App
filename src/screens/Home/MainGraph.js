@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Dimensions } from "react-native";
+import { Dimensions } from "react-native";
 import { BarGraph } from "../../components/BarGraph";
 
 import { AppColors } from "../../style";
@@ -24,6 +24,7 @@ const MainGraph = () => {
                     color: "#D3D3D3"
                 }
             }}
+            extraHeight={30}
             style={{
                 paddingVertical: 10,
                 alignSelf: "center",

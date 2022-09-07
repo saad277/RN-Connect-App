@@ -9,6 +9,7 @@ import { Icon } from "../../components/Icon";
 import { ProgressCircle } from "../../components/ProgressCircle";
 import Filter from "./Filter";
 import MainGraph from "./MainGraph";
+import DailyGraph from "./DailyGraph"
 
 const PeriodItem = () => {
     return (
@@ -124,12 +125,15 @@ const Home = (props) => {
                     style={{
                         backgroundColor: AppColors.LightBlue,
                         marginHorizontal: 20,
-                        marginBottom: 4
+                        marginBottom: 4,
+                        paddingBottom:10
                     }}
                 >
                     <Text color={AppColors.DarkBlue} topSpacing={14} leftSpacing={14}>
                         Avg. usage per time period
                     </Text>
+
+                    <DailyGraph />
                 </View>
 
                 <Text color={AppColors.PrimaryBlue} leftSpacing={20} topSpacing={20}>

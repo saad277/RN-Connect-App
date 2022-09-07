@@ -7,7 +7,8 @@ const BarChart = ({
     data,
     labels,
     subLabels,
-    height,
+    height=0,
+    extraHeight=0,
     width,
     barRadius = 0,
     barWidthPercentage = 0.7,
@@ -66,7 +67,7 @@ const BarChart = ({
     };
     return (
         <View style={style}>
-            <Svg height={height + 30} width={width}>
+            <Svg height={height + extraHeight} width={width}>
                 <G>
                     {baseConfig.hasXAxisBackgroundLines !== false
                         ? chartBuilder.renderXAxisLines()
