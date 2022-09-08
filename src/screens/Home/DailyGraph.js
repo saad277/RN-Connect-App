@@ -13,14 +13,36 @@ const DailyGraph = () => {
                     width: "96%",
                     height: "96%",
                     backgroundColor: AppColors.White,
-                    alignSelf:"center",
-                    borderRadius:9
+                    alignSelf: "center",
+                    borderRadius: 9
                 }}
             />
+            <View
+                style={{
+                    position: "absolute",
+                    width: "2%",
+                    height: "100%",
+                    backgroundColor: AppColors.LightBlue,
+                    alignSelf: "flex-end",
+                    borderRadius: 9,
+                    zIndex: 1
+                }}
+            ></View>
+            <View
+                style={{
+                    position: "absolute",
+                    width: "2%",
+                    height: "100%",
+                    backgroundColor: AppColors.LightBlue,
+                    alignSelf: "flex-start",
+                    borderRadius: 9,
+                    zIndex: 1
+                }}
+            ></View>
             <BarGraph
                 data={[10, 21, 34, 32]}
                 labels={["00-06am", "6am-12pm", "12pm-18pm", "18pm-00"]}
-                width={Dimensions.get("window").width - 35}
+                width={Dimensions.get("window").width - 40}
                 height={Dimensions.get("window").width / 4}
                 barRadius={5}
                 barColor={AppColors.PrimaryBlue}
