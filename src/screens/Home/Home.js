@@ -9,7 +9,8 @@ import { Icon } from "../../components/Icon";
 import { ProgressCircle } from "../../components/ProgressCircle";
 import Filter from "./Filter";
 import MainGraph from "./MainGraph";
-import DailyGraph from "./DailyGraph"
+import DailyGraph from "./DailyGraph";
+import WeeklyGraph from "./WeeklyGraph"
 
 const PeriodItem = () => {
     return (
@@ -37,12 +38,15 @@ const Home = (props) => {
                 showsVerticalScrollIndicator={false}
             >
                 <View style={styles.header}>
-                    <Icon
-                        source={require("../../assets/avatar.png")}
-                        width={24}
-                        height={24}
-                        style={{ borderRadius: 24 / 2 }}
-                    />
+                    <TouchableOpacity onPress={() => navigation.navigate(APP_ROUTES.PROFILE)}>
+                        <Icon
+                            source={require("../../assets/avatar.png")}
+                            width={24}
+                            height={24}
+                            style={{ borderRadius: 24 / 2 }}
+                        />
+                    </TouchableOpacity>
+
                     <Text color={AppColors.PrimaryBlue} size={17}>
                         AIR4ME
                     </Text>
@@ -108,7 +112,7 @@ const Home = (props) => {
                         style={{
                             flexDirection: "row",
                             justifyContent: "space-between",
-                            marginLeft:10
+                            marginLeft: 10
                         }}
                     >
                         <PeriodItem />
@@ -126,7 +130,7 @@ const Home = (props) => {
                         backgroundColor: AppColors.LightBlue,
                         marginHorizontal: 20,
                         marginBottom: 4,
-                        paddingBottom:10
+                        paddingBottom: 10
                     }}
                 >
                     <Text color={AppColors.DarkBlue} topSpacing={14} leftSpacing={14}>
@@ -134,6 +138,21 @@ const Home = (props) => {
                     </Text>
 
                     <DailyGraph />
+                </View>
+
+                <View
+                    style={{
+                        backgroundColor: AppColors.LightBlue,
+                        marginHorizontal: 20,
+                        marginBottom: 4,
+                        paddingBottom: 10
+                    }}
+                >
+                    <Text color={AppColors.DarkBlue} topSpacing={14} leftSpacing={14}>
+                        Avg. usage per day of the week
+                    </Text>
+
+                    <WeeklyGraph/>
                 </View>
 
                 <Text color={AppColors.PrimaryBlue} leftSpacing={20} topSpacing={20}>
