@@ -1,25 +1,33 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 import { NavigationTheme, AppColors } from "./style";
 
 import { AuthStack, UserStack } from "./navigation";
-import { AuthContext } from "./context/authContext";
-import { authReducer, initialState } from "./context/authReducer";
+
+const Stack = createStackNavigator();
 
 const App = () => {
-    const [state, dispatch] = useReducer(authReducer, initialState);
-
     return (
         <NavigationContainer theme={NavigationTheme}>
             <StatusBar backgroundColor={AppColors.PrimaryBlue} />
-            <AuthContext.Provider value={{ state, dispatch }}>
-                <UserStack />
-            </AuthContext.Provider>
+
+            <Stack.Navigator>
+                <Stack.Screen
+                    name={"Auth"}
+                    component={AuthStack}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name={"User"}
+                    component={UserStack}
+                    options={{ headerShown: false }}
+                />
+            </Stack.Navigator>
         </NavigationContainer>
     );
 };
 
 export default App;
-

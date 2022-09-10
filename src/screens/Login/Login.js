@@ -50,7 +50,11 @@ const Login = (props) => {
                     onChange={setPassword}
                 />
 
-                <Button text="Sign In" containerStyles={styles.btn} />
+                <Button
+                    text="Sign In"
+                    containerStyles={styles.btn}
+                    onPress={() => navigation.navigate("User")}
+                />
                 <Text color={AppColors.PrimaryGray} centered size={12} topSpacing={14}>
                     Forgot Password?
                 </Text>
