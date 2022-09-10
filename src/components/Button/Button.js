@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import { TouchableOpacity, StyleSheet, ActivityIndicator } from "react-native";
 
 import { AppColors } from "../../style";
 
@@ -22,9 +22,13 @@ const Button = (props) => {
             onPress={onPress}
             disabled={isLoading || disabled}
         >
-            <Text color={AppColors.White} size={fontSize}>
-                {text}
-            </Text>
+            {isLoading ? (
+                <ActivityIndicator color="white" />
+            ) : (
+                <Text color={AppColors.White} size={fontSize}>
+                    {text}
+                </Text>
+            )}
         </TouchableOpacity>
     );
 };

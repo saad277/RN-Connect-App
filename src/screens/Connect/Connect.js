@@ -11,6 +11,7 @@ import BluetoothStateManager from "react-native-bluetooth-state-manager";
 
 const Connect = () => {
     const [isEnabled, setIsEnabled] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const init = () => {
@@ -25,7 +26,6 @@ const Connect = () => {
 
     useEffect(() => {
         BluetoothStateManager.onStateChange((bluetoothState) => {
-            console.log(bluetoothState);
             if (bluetoothState === BluetoothStates.PoweredOn) {
                 setIsEnabled(true);
             } else {
@@ -34,9 +34,18 @@ const Connect = () => {
         }, true);
     }, []);
 
-    const handleConnect = () => {
+    const handleConnect = async () => {
         if (!isEnabled) {
             Alert.alert("Please enable bluetooth in settings");
+            return;
+        }
+
+        setLoading(true);
+        try {
+            await BluetoothService.scanNConnect();
+        } catch (err) {
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -81,7 +90,12 @@ const Connect = () => {
 
             <View style={styles.circle} />
 
-            <Button text="Connect" containerStyles={styles.btn} onPress={handleConnect} />
+            <Button
+                text="Connect"
+                isLoading={loading}
+                containerStyles={styles.btn}
+                onPress={handleConnect}
+            />
         </View>
     );
 };
