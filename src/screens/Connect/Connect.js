@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet, Alert, PermissionsAndroid } from "react-native";
 
 import { AppColors } from "../../style";
 
@@ -38,6 +38,23 @@ const Connect = () => {
         if (!isEnabled) {
             Alert.alert("Please enable bluetooth in settings");
             return;
+        }
+
+        const hasPermission = await PermissionsAndroid.check(
+            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+        );
+
+        if (!hasPermission) {
+            const status = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+            );
+            if (status === PermissionsAndroid.RESULTS.DENIED) {
+                ToastAndroid.show("Location permission denied by user.", ToastAndroid.LONG);
+                return;
+            } else if (status === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) {
+                ToastAndroid.show("Location permission revoked by user.", ToastAndroid.LONG);
+                return;
+            }
         }
 
         setLoading(true);
