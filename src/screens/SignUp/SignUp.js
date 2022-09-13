@@ -58,7 +58,7 @@ const SignUp = (props) => {
                     Privacy Policy.
                 </Text>
 
-                <Button text="Continue" containerStyles={styles.btn} />
+                <Button text="Continue" containerStyles={styles.btn} onPress={navigation.goBack} />
 
                 <View style={{ flexDirection: "row", justifyContent: "center" }}>
                     <Text

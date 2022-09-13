@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } from "react-native";
+import { View, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image } from "react-native";
 
 import { AppColors } from "../../style";
 
@@ -10,7 +10,7 @@ import { ProgressCircle } from "../../components/ProgressCircle";
 import Filter from "./Filter";
 import MainGraph from "./MainGraph";
 import DailyGraph from "./DailyGraph";
-import WeeklyGraph from "./WeeklyGraph"
+import WeeklyGraph from "./WeeklyGraph";
 
 const PeriodItem = () => {
     return (
@@ -24,6 +24,23 @@ const PeriodItem = () => {
                 12 May 2022 - 11 June 2022
             </Text>
         </View>
+    );
+};
+
+const Emoji = (props) => {
+    const { source, left } = props;
+
+    return (
+        <Image
+            source={source}
+            style={{
+                width: 20,
+                height: 20,
+                position: "absolute",
+                top: -23,
+                left
+            }}
+        />
     );
 };
 
@@ -85,18 +102,35 @@ const Home = (props) => {
 
                 <MainGraph />
 
+                <View style={{ position: "relative" }}>
+                    <Emoji source={require("../../assets/icons/meh.png")} left={"8%"} />
+                    <Emoji source={require("../../assets/icons/happy.png")} left={"21%"} />
+                    <Emoji source={require("../../assets/icons/smile.png")} left={"34%"} />
+                    <Emoji source={require("../../assets/icons/meh.png")} left={"47%"} />
+                    <Emoji source={require("../../assets/icons/smile.png")} left={"60%"} />
+                    <Emoji source={require("../../assets/icons/meh.png")} left={"73%"} />
+                    <Emoji source={require("../../assets/icons/shocked.png")} left={"85%"} />
+                </View>
+
                 <Text color={AppColors.PrimaryBlue} leftSpacing={20} topSpacing={20}>
                     RESCUE
                 </Text>
 
                 <View style={styles.average}>
-                    <View style={{ marginLeft: 15 }}>
-                        <Text color={AppColors.DarkBlue} size={15}>
-                            Average Usage
-                        </Text>
-                        <Text color={AppColors.DarkBlue} size={11}>
-                            (based on last 10 days)
-                        </Text>
+                    <View style={{ flexDirection: "row" }}>
+                        <Image
+                            source={require("../../assets/icons/inhaler.png")}
+                            style={{ width: 26, height: 26, alignSelf: "center", marginLeft: 15 }}
+                        />
+
+                        <View style={{ marginLeft: 15 }}>
+                            <Text color={AppColors.DarkBlue} size={15}>
+                                Average Usage
+                            </Text>
+                            <Text color={AppColors.DarkBlue} size={11}>
+                                (based on last 10 days)
+                            </Text>
+                        </View>
                     </View>
                     <Text color={AppColors.DarkBlue} size={24}>
                         3.5
@@ -152,7 +186,7 @@ const Home = (props) => {
                         Avg. usage per day of the week
                     </Text>
 
-                    <WeeklyGraph/>
+                    <WeeklyGraph />
                 </View>
 
                 <Text color={AppColors.PrimaryBlue} leftSpacing={20} topSpacing={20}>
@@ -321,4 +355,3 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
-
