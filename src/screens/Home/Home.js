@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image } from "react-native";
 
 import { AppColors } from "../../style";
@@ -7,11 +7,17 @@ import { APP_ROUTES } from "../../routes";
 import { Text } from "../../components/Text";
 import { Icon } from "../../components/Icon";
 import { ProgressCircle } from "../../components/ProgressCircle";
-import Filter from "./Filter";
+import Filter, { FILTERS } from "./Filter";
 import DateFilter from "./DateFilter";
 import MainGraph from "./MainGraph";
 import DailyGraph from "./DailyGraph";
 import WeeklyGraph from "./WeeklyGraph";
+
+const AVERAGE_TEXT = {
+    [FILTERS.DAILY]: "Avg. usage per time period",
+    [FILTERS.WEEKLY]: "Avg. ",
+    [FILTERS.MONTHLY]: ""
+};
 
 const PeriodItem = () => {
     return (
@@ -47,6 +53,7 @@ const Emoji = (props) => {
 
 const Home = (props) => {
     const { navigation } = props;
+    const [selected, setSelected] = useState(FILTERS.DAILY);
 
     return (
         <SafeAreaView>
@@ -81,7 +88,7 @@ const Home = (props) => {
                         />
                     </TouchableOpacity>
                 </View>
-                <Filter style={styles.filters} />
+                <Filter style={styles.filters} selected={selected} setSelected={setSelected} />
 
                 <DateFilter />
 
@@ -158,21 +165,52 @@ const Home = (props) => {
 
                     <DailyGraph />
                 </View>
+                {selected !== FILTERS.DAILY && (
+                    <View
+                        style={{
+                            backgroundColor: AppColors.LightBlue,
+                            marginHorizontal: 20,
+                            marginBottom: 4,
+                            paddingBottom: 10
+                        }}
+                    >
+                        <Text color={AppColors.DarkBlue} topSpacing={14} leftSpacing={14}>
+                            Avg. usage per day
+                        </Text>
 
-                <View
-                    style={{
-                        backgroundColor: AppColors.LightBlue,
-                        marginHorizontal: 20,
-                        marginBottom: 4,
-                        paddingBottom: 10
-                    }}
-                >
-                    <Text color={AppColors.DarkBlue} topSpacing={14} leftSpacing={14}>
-                        Avg. usage per day of the week
-                    </Text>
+                        <WeeklyGraph />
+                    </View>
+                )}
 
-                    <WeeklyGraph />
-                </View>
+                {selected !== FILTERS.DAILY && (
+                    <View
+                        style={{
+                            backgroundColor: AppColors.LightBlue,
+                            marginHorizontal: 20,
+                            marginBottom: 4,
+                            paddingBottom: 17,
+                            justifyContent: "space-between",
+                            flexDirection: "row",
+                            borderBottomLeftRadius: 9,
+                            borderBottomRightRadius: 9
+                        }}
+                    >
+                        <Text color={AppColors.DarkBlue} topSpacing={17} leftSpacing={14}>
+                            Days without usage
+                        </Text>
+                        <View
+                            style={{
+                                backgroundColor: "#fff",
+                                marginTop: 14,
+                                padding: 8,
+                                marginRight: 14,
+                                borderRadius: 9
+                            }}
+                        >
+                            <Text color={AppColors.DarkBlue} size={18}>4/30</Text>
+                        </View>
+                    </View>
+                )}
 
                 <Text color={AppColors.PrimaryBlue} leftSpacing={20} topSpacing={20}>
                     REGULARS

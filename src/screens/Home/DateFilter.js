@@ -5,18 +5,18 @@ import { Icon } from "../../components/Icon";
 import { Text } from "../../components/Text";
 
 const monthNames = [
-    "January",
-    "February",
+    "Jan",
+    "Feb",
     "March",
     "April",
     "May",
     "June",
     "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
 ];
 
 const DateFilter = () => {

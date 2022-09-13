@@ -12,9 +12,7 @@ export const FILTERS = {
 };
 
 const Filter = (props) => {
-    const { style = {} } = props;
-
-    const [selected, setSelected] = useState(FILTERS.DAILY);
+    const { style = {}, selected, setSelected } = props;
 
     return (
         <View style={[styles.wrapper, style]}>
