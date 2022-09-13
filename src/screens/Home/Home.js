@@ -8,6 +8,7 @@ import { Text } from "../../components/Text";
 import { Icon } from "../../components/Icon";
 import { ProgressCircle } from "../../components/ProgressCircle";
 import Filter from "./Filter";
+import DateFilter from "./DateFilter";
 import MainGraph from "./MainGraph";
 import DailyGraph from "./DailyGraph";
 import WeeklyGraph from "./WeeklyGraph";
@@ -82,23 +83,7 @@ const Home = (props) => {
                 </View>
                 <Filter style={styles.filters} />
 
-                <View style={styles.date}>
-                    <Icon
-                        source={require("../../assets/icons/left-arrow.png")}
-                        width={14}
-                        height={14}
-                        style={{ marginRight: 10 }}
-                        onPress={() => {}}
-                    />
-                    <Text>1. June 2022</Text>
-                    <Icon
-                        source={require("../../assets/icons/right-arrow.png")}
-                        width={14}
-                        height={14}
-                        style={{ marginLeft: 10 }}
-                        onPress={() => {}}
-                    />
-                </View>
+                <DateFilter />
 
                 <MainGraph />
 
@@ -264,11 +249,6 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginHorizontal: 20,
         marginBottom: 30
-    },
-    date: {
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center"
     },
     average: {
         backgroundColor: AppColors.LightBlue,
