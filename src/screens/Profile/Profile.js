@@ -4,6 +4,7 @@ import DatePicker from "react-native-date-picker";
 
 import { AppColors } from "../../style";
 
+import { APP_ROUTES } from "../../routes";
 import { Text } from "../../components/Text";
 import { Icon } from "../../components/Icon";
 
@@ -81,6 +82,7 @@ const Profile = (props) => {
                     title="Notifications"
                     time="19:00"
                     text="The time you want to ask you about your day"
+                    onPress={() => navigation.navigate(APP_ROUTES.NOTIFICATION)}
                 />
                 <ListItem title="Profile" text="A couple infos about you" />
                 <ListItem title="Device" text="Add or change" style={styles.radiusBottom} />

@@ -5,5 +5,9 @@ export const APP_ROUTES = {
     ACTIVATE_DEVICE: "ActivateDevice",
     CONNECT: "Connect",
     PROFILE: "Profile",
-    HOME: "Home"
+    HOME: "Home",
+    NOTIFICATION: "Notifications",
+    PRIVACY_POLICY: "PrivacyPolicy",
+    TERMS_SERVICE: "TermsService",
+    FAQS: "Faqs"
 };

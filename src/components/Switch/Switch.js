@@ -8,8 +8,8 @@ const Switch = (props) => {
     return (
         <RNSwitch
             trackColor={{
-                false: AppColors.PrimaryGray,
-                true: AppColors.LightBlue
+                false: AppColors.White,
+                true: AppColors.PrimaryBlue
             }}
             thumbColor={AppColors.DarkBlue}
             value={value}

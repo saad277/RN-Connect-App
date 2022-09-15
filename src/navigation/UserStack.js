@@ -12,13 +12,15 @@ import MedicationType from "../screens/MedicationType/MedicationType";
 import ActivateDevice from "../screens/ActivateDevice/ActivateDevice";
 import Connect from "../screens/Connect/Connect";
 import Profile from "../screens/Profile/Profile";
+import Notifications from "../screens/Notifications/Notifications";
 
 const routes = [
     { name: APP_ROUTES.MEDICATION_TYPE, component: MedicationType },
     { name: APP_ROUTES.ACTIVATE_DEVICE, component: ActivateDevice },
     { name: APP_ROUTES.CONNECT, component: Connect },
     { name: APP_ROUTES.PROFILE, component: Profile },
-    { name: APP_ROUTES.HOME, component: Home }
+    { name: APP_ROUTES.HOME, component: Home },
+    { name: APP_ROUTES.NOTIFICATION, component: Notifications }
 ];
 
 export default () => {

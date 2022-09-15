@@ -8,12 +8,12 @@ import { Text } from "../Text";
 import { Icon } from "../Icon";
 
 const Header = (props) => {
-    const { title = "" } = props;
+    const { title = "", style = {} } = props;
 
     const navigation = useNavigation();
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={[styles.container, style]}>
             <Icon
                 source={require("../../assets/icons/back-icon.png")}
                 width={14}
