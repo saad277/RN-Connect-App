@@ -107,9 +107,20 @@ const Profile = (props) => {
                 >
                     MOBILE APP
                 </Text>
-                <ListItem title="Privacy Policy" style={styles.radiusTop} />
-                <ListItem title="Terms of service" />
-                <ListItem title="FAQ" style={[styles.radiusBottom, styles.mb20]} />
+                <ListItem
+                    title="Privacy Policy"
+                    style={styles.radiusTop}
+                    onPress={() => navigation.navigate(APP_ROUTES.PRIVACY_POLICY)}
+                />
+                <ListItem
+                    title="Terms of service"
+                    onPress={() => navigation.navigate(APP_ROUTES.TERMS_SERVICE)}
+                />
+                <ListItem
+                    title="FAQ"
+                    style={[styles.radiusBottom, styles.mb20]}
+                    onPress={() => navigation.navigate(APP_ROUTES.FAQS)}
+                />
             </View>
             <DatePicker
                 modal

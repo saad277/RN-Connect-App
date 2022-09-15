@@ -13,6 +13,9 @@ import ActivateDevice from "../screens/ActivateDevice/ActivateDevice";
 import Connect from "../screens/Connect/Connect";
 import Profile from "../screens/Profile/Profile";
 import Notifications from "../screens/Notifications/Notifications";
+import Faqs from "../screens/Faqs/Faqs";
+import TermsOfService from "../screens/TermsOfService/TermsOfService";
+import PrivacyPolicy from "../screens/PrivacyPolicy/PrivacyPolicy";
 
 const routes = [
     { name: APP_ROUTES.MEDICATION_TYPE, component: MedicationType },
@@ -20,7 +23,10 @@ const routes = [
     { name: APP_ROUTES.CONNECT, component: Connect },
     { name: APP_ROUTES.PROFILE, component: Profile },
     { name: APP_ROUTES.HOME, component: Home },
-    { name: APP_ROUTES.NOTIFICATION, component: Notifications }
+    { name: APP_ROUTES.NOTIFICATION, component: Notifications },
+    { name: APP_ROUTES.FAQS, component: Faqs },
+    { name: APP_ROUTES.PRIVACY_POLICY, component: PrivacyPolicy },
+    { name: APP_ROUTES.TERMS_SERVICE, component: TermsOfService }
 ];
 
 export default () => {
