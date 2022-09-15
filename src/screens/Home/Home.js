@@ -19,6 +19,24 @@ const AVERAGE_TEXT = {
     [FILTERS.MONTHLY]: ""
 };
 
+const GraphData = {
+    [FILTERS.DAILY]: {
+        data: [20, 45, 28, 80, 99, 43, 50],
+        labels: ["01", "02", "03", "04", "05", "06", "07"],
+        subLabels: ["Jun", "Jun", "Jun", "Jun", "Jun", "Jun", "Jun"]
+    },
+    [FILTERS.WEEKLY]: {
+        data: [15, 30, 40, 24, 16, 23, 32],
+        labels: ["01", "02", "03", "04", "05", "06", "07"],
+        subLabels: ["Jun", "Jun", "Jun", "Jun", "Jun", "Jun", "Jun"]
+    },
+    [FILTERS.MONTHLY]: {
+        data: [20, 45, 28, 80, 99, 43, 50],
+        labels: ["01", "02", "03", "04", "05", "06", "07"],
+        subLabels: ["Jun", "Jun", "Jun", "Jun", "Jun", "Jun", "Jun"]
+    }
+};
+
 const PeriodItem = () => {
     return (
         <View>
@@ -78,13 +96,11 @@ const Home = (props) => {
                     <TouchableOpacity
                         onPress={() => navigation.navigate(APP_ROUTES.ACTIVATE_DEVICE)}
                     >
-                        <View
-                            style={{
-                                backgroundColor: AppColors.LightBlue,
-                                width: 24,
-                                height: 24,
-                                borderRadius: 24 / 2
-                            }}
+                        <Icon
+                            source={require("../../assets/icons/add.png")}
+                            width={24}
+                            height={24}
+                            style={{ borderRadius: 24 / 2 }}
                         />
                     </TouchableOpacity>
                 </View>
@@ -92,7 +108,11 @@ const Home = (props) => {
 
                 <DateFilter />
 
-                <MainGraph />
+                <MainGraph
+                    data={GraphData[selected].data}
+                    labels={GraphData[selected].labels}
+                    subLabels={GraphData[selected].subLabels}
+                />
 
                 <View style={{ position: "relative" }}>
                     <Emoji source={require("../../assets/icons/meh.png")} left={"8%"} />
@@ -207,7 +227,9 @@ const Home = (props) => {
                                 borderRadius: 9
                             }}
                         >
-                            <Text color={AppColors.DarkBlue} size={18}>4/30</Text>
+                            <Text color={AppColors.DarkBlue} size={18}>
+                                4/30
+                            </Text>
                         </View>
                     </View>
                 )}

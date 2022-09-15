@@ -1,44 +1,62 @@
-import React from "react";
-import { View, StyleSheet, ScrollView, Image } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, ScrollView, Image, TouchableWithoutFeedback } from "react-native";
+import DatePicker from "react-native-date-picker";
 
 import { AppColors } from "../../style";
 
-import { Header } from "../../components/Header";
 import { Text } from "../../components/Text";
+import { Icon } from "../../components/Icon";
 
 const ListItem = (props) => {
-    const { title = "", text = "", time = "", style = {} } = props;
+    const { title = "", text = "", time = "", style = {}, onPress } = props;
     return (
-        <View style={[styles.itemContainer, style]}>
-            <View style={{ flex: 1 }}>
-                <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                    <Text color={AppColors.PrimaryBlue} size={18}>
-                        {title}
-                    </Text>
-                    {!!time && (
-                        <Text color={AppColors.PrimaryBlue} size={20} rightSpacing={16}>
-                            {time}
+        <TouchableWithoutFeedback onPress={onPress}>
+            <View style={[styles.itemContainer, style]}>
+                <View style={{ flex: 1 }}>
+                    <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+                        <Text color={AppColors.PrimaryBlue} size={18}>
+                            {title}
+                        </Text>
+                        {!!time && (
+                            <Text color={AppColors.PrimaryBlue} size={20} rightSpacing={16}>
+                                {time}
+                            </Text>
+                        )}
+                    </View>
+                    {!!text && (
+                        <Text color={AppColors.PrimaryBlue} size={12} bottomSpacing={20}>
+                            {text}
                         </Text>
                     )}
                 </View>
-                {!!text && (
-                    <Text color={AppColors.PrimaryBlue} size={12} bottomSpacing={20}>
-                        {text}
-                    </Text>
-                )}
+                <Image source={require("../../assets/icons/right-arrow.png")} style={styles.icon} />
             </View>
-            <Image source={require("../../assets/icons/right-arrow.png")} style={styles.icon} />
-        </View>
+        </TouchableWithoutFeedback>
     );
 };
 
-const Profile = () => {
+const Profile = (props) => {
+    const { navigation } = props;
+
+    const [date, setDate] = useState(new Date());
+    const [open, setOpen] = useState(false);
+
     return (
         <ScrollView
             keyboardShouldPersistTaps="handled"
             bounces={false}
             showsVerticalScrollIndicator={false}
         >
+            <Icon
+                source={require("../../assets/icons/left-arrow.png")}
+                width={25}
+                height={25}
+                style={{
+                    marginTop: 20,
+                    marginLeft: 20
+                }}
+                onPress={navigation.goBack}
+            />
             <View style={styles.container}>
                 <View style={styles.wrapper}>
                     <Image source={require("../../assets/avatar.png")} style={styles.avatar} />
@@ -57,6 +75,7 @@ const Profile = () => {
                     time="08:00"
                     text="The time you want to us to remind you to take your regular medication"
                     style={styles.radiusTop}
+                    onPress={() => setOpen(true)}
                 />
                 <ListItem
                     title="Notifications"
@@ -90,6 +109,19 @@ const Profile = () => {
                 <ListItem title="Terms of service" />
                 <ListItem title="FAQ" style={[styles.radiusBottom, styles.mb20]} />
             </View>
+            <DatePicker
+                modal
+                open={open}
+                date={date}
+                onConfirm={(date) => {
+                    setOpen(false);
+                    setDate(date);
+                }}
+                onCancel={() => {
+                    setOpen(false);
+                }}
+                mode="time"
+            />
         </ScrollView>
     );
 };
@@ -101,7 +133,7 @@ const styles = StyleSheet.create({
     wrapper: {
         position: "relative",
         alignSelf: "center",
-        marginTop: 40
+        marginTop: 15
     },
     avatar: {
         width: 70,
