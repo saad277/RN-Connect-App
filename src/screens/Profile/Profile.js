@@ -95,9 +95,20 @@ const Profile = (props) => {
                     LET'S IMPROVE THIS APP TOGETHER
                 </Text>
 
-                <ListItem title="Feature Request" style={styles.radiusTop} />
-                <ListItem title="Join our group chat(Discord)" />
-                <ListItem title="Report a bug" style={styles.radiusBottom} />
+                <ListItem
+                    title="Feature Request"
+                    style={styles.radiusTop}
+                    onPress={() => navigation.navigate(APP_ROUTES.FEATURE_REQUEST)}
+                />
+                <ListItem
+                    title="Join our group chat(Discord)"
+                    onPress={() => navigation.navigate(APP_ROUTES.JOIN_CHAT)}
+                />
+                <ListItem
+                    title="Report a bug"
+                    style={styles.radiusBottom}
+                    onPress={() => navigation.navigate(APP_ROUTES.REPORT_BUG)}
+                />
 
                 <Text
                     color={AppColors.PrimaryBlue}

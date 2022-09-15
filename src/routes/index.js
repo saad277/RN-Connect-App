@@ -9,5 +9,8 @@ export const APP_ROUTES = {
     NOTIFICATION: "Notifications",
     PRIVACY_POLICY: "PrivacyPolicy",
     TERMS_SERVICE: "TermsService",
-    FAQS: "Faqs"
+    FAQS: "Faqs",
+    FEATURE_REQUEST: "FeatureRequest",
+    REPORT_BUG: "ReportBug",
+    JOIN_CHAT: "JoinChat"
 };

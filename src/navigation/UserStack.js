@@ -16,6 +16,9 @@ import Notifications from "../screens/Notifications/Notifications";
 import Faqs from "../screens/Faqs/Faqs";
 import TermsOfService from "../screens/TermsOfService/TermsOfService";
 import PrivacyPolicy from "../screens/PrivacyPolicy/PrivacyPolicy";
+import JoinChat from "../screens/JoinChat/JoinChat";
+import FeatureRequest from "../screens/FeatureRequest/FeatureRequest";
+import ReportBug from "../screens/ReportBug/ReportBug";
 
 const routes = [
     { name: APP_ROUTES.MEDICATION_TYPE, component: MedicationType },
@@ -26,7 +29,10 @@ const routes = [
     { name: APP_ROUTES.NOTIFICATION, component: Notifications },
     { name: APP_ROUTES.FAQS, component: Faqs },
     { name: APP_ROUTES.PRIVACY_POLICY, component: PrivacyPolicy },
-    { name: APP_ROUTES.TERMS_SERVICE, component: TermsOfService }
+    { name: APP_ROUTES.TERMS_SERVICE, component: TermsOfService },
+    { name: APP_ROUTES.FEATURE_REQUEST, component: FeatureRequest },
+    { name: APP_ROUTES.JOIN_CHAT, component: JoinChat },
+    { name: APP_ROUTES.REPORT_BUG, component: ReportBug }
 ];
 
 export default () => {
