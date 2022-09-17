@@ -163,7 +163,15 @@ const Home = (props) => {
                         <PeriodItem />
                         <View>
                             <View style={styles.line} />
-                            <Text color={AppColors.PrimaryGreen}>-7,37%</Text>
+                            <Text
+                                color={
+                                    selected === FILTERS.WEEKLY
+                                        ? AppColors.Red
+                                        : AppColors.PrimaryGreen
+                                }
+                            >
+                                {selected === FILTERS.WEEKLY ? "+8,8%" : "-7,37%"}
+                            </Text>
                             <View style={styles.line} />
                         </View>
                         <PeriodItem />
