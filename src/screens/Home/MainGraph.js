@@ -15,9 +15,9 @@ const MainGraph = (props) => {
                 subLabels={subLabels}
                 width={Dimensions.get("window").width - 35}
                 height={Dimensions.get("window").width / 7 + 215}
-                barRadius={5}
+                //barRadius={5}
                 barColor={AppColors.DarkBlue}
-                barWidthPercentage={0.65}
+                barWidthPercentage={0.4}
                 baseConfig={{
                     hasXAxisBackgroundLines: true,
                     hasYAxisLabels: true,

@@ -27,13 +27,13 @@ const GraphData = {
     },
     [FILTERS.WEEKLY]: {
         data: [15, 30, 40, 24, 16, 23, 32],
-        labels: ["01", "02", "03", "04", "05", "06", "07"],
+        labels: ["02-09", "09-16", "16-32", "23-30", "30-70", "21-28", "28-04"],
         subLabels: ["Jun", "Jun", "Jun", "Jun", "Jun", "Jun", "Jun"]
     },
     [FILTERS.MONTHLY]: {
-        data: [20, 45, 28, 80, 99, 43, 50],
-        labels: ["01", "02", "03", "04", "05", "06", "07"],
-        subLabels: ["Jun", "Jun", "Jun", "Jun", "Jun", "Jun", "Jun"]
+        data: [31, 42, 11, 55, 62, 4, 20],
+        labels: ["13 aug", "12 sep", "03 nov", "04 jan", "21 mar", "06 may", "07 july"],
+        subLabels: ["-12 sep", "-13 oct", "-07 dec", "-16 feb", "-13 apr", "-09 jun", "-15 aug"]
     }
 };
 
@@ -56,16 +56,15 @@ const Emoji = (props) => {
     const { source, left } = props;
 
     return (
-        <Image
-            source={source}
-            style={{
-                width: 20,
-                height: 20,
-                position: "absolute",
-                top: -23,
-                left
-            }}
-        />
+        <TouchableOpacity style={{ position: "absolute", top: -23, left }}>
+            <Image
+                source={source}
+                style={{
+                    width: 20,
+                    height: 20
+                }}
+            />
+        </TouchableOpacity>
     );
 };
 
@@ -116,12 +115,12 @@ const Home = (props) => {
 
                 <View style={{ position: "relative" }}>
                     <Emoji source={require("../../assets/icons/meh.png")} left={"8%"} />
-                    <Emoji source={require("../../assets/icons/happy.png")} left={"21%"} />
+                    <Emoji source={require("../../assets/icons/sad.png")} left={"21%"} />
                     <Emoji source={require("../../assets/icons/smile.png")} left={"34%"} />
-                    <Emoji source={require("../../assets/icons/meh.png")} left={"47%"} />
+                    <Emoji source={require("../../assets/icons/happy.png")} left={"47%"} />
                     <Emoji source={require("../../assets/icons/smile.png")} left={"60%"} />
-                    <Emoji source={require("../../assets/icons/meh.png")} left={"73%"} />
-                    <Emoji source={require("../../assets/icons/shocked.png")} left={"85%"} />
+                    <Emoji source={require("../../assets/icons/shocked.png")} left={"73%"} />
+                    <Emoji source={require("../../assets/icons/add.png")} left={"86%"} />
                 </View>
 
                 <Text color={AppColors.PrimaryBlue} leftSpacing={20} topSpacing={20}>
@@ -395,3 +394,4 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
+

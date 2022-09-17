@@ -1,8 +1,10 @@
 import React from "react";
-import { Dimensions, View } from "react-native";
-import { BarGraph } from "../../components/BarGraph";
+import { Dimensions, View, TouchableOpacity } from "react-native";
 
 import { AppColors } from "../../style";
+
+import { BarGraph } from "../../components/BarGraph";
+import { Text } from "../../components/Text";
 
 const DailyGraph = () => {
     return (
@@ -40,8 +42,8 @@ const DailyGraph = () => {
                 }}
             ></View>
             <BarGraph
-                data={[12,13,22,17,21,8,6]}
-                labels={["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]}
+                data={[12, 13, 22, 17, 21, 8, 6]}
+                labels={["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]}
                 width={Dimensions.get("window").width - 40}
                 height={Dimensions.get("window").width / 2}
                 barRadius={5}

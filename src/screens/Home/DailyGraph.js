@@ -1,12 +1,28 @@
 import React from "react";
-import { Dimensions, View } from "react-native";
-import { BarGraph } from "../../components/BarGraph";
+import { Dimensions, View, TouchableOpacity } from "react-native";
 
 import { AppColors } from "../../style";
+
+import { Text } from "../../components/Text";
+import { BarGraph } from "../../components/BarGraph";
+
+const RenderText = (props) => {
+    const { text = "", left } = props;
+
+    return (
+        <TouchableOpacity style={{ position: "absolute", top: "20%", left, zIndex: 1 }}>
+            <Text color={AppColors.DarkBlue}>{text}</Text>
+        </TouchableOpacity>
+    );
+};
 
 const DailyGraph = () => {
     return (
         <View style={{ marginTop: 20, position: "relative" }}>
+            <RenderText text="27%" left={"9%"} />
+            <RenderText text="35%" left={"33%"} />
+            <RenderText text="89%" left={"58%"} />
+            <RenderText text="63%" left={"83%"} />
             <View
                 style={{
                     position: "absolute",
@@ -46,7 +62,7 @@ const DailyGraph = () => {
                 height={Dimensions.get("window").width / 4}
                 barRadius={5}
                 barColor={AppColors.PrimaryBlue}
-                barWidthPercentage={0.35}
+                barWidthPercentage={0.55}
                 baseConfig={{
                     hasXAxisBackgroundLines: true,
                     hasYAxisLabels: true,
