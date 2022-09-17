@@ -19,7 +19,8 @@ const monthNames = [
     "Dec"
 ];
 
-const DateFilter = () => {
+const DateFilter = (props) => {
+    const { secondDate = false } = props;
     const [date, setDate] = useState(new Date("2022-06-01"));
 
     const handleDateIncrement = () => {
@@ -32,24 +33,31 @@ const DateFilter = () => {
     };
 
     return (
-        <View style={styles.date}>
-            <Icon
-                source={require("../../assets/icons/left-arrow.png")}
-                width={14}
-                height={14}
-                style={{ marginRight: 10 }}
-                onPress={handleDateDecrement}
-            />
-            <Text>
-                {date.getDate()}. {monthNames[date.getMonth()]} {date.getFullYear()}
-            </Text>
-            <Icon
-                source={require("../../assets/icons/right-arrow.png")}
-                width={14}
-                height={14}
-                style={{ marginLeft: 10 }}
-                onPress={handleDateIncrement}
-            />
+        <View>
+            <View style={styles.date}>
+                <Icon
+                    source={require("../../assets/icons/left-arrow.png")}
+                    width={14}
+                    height={14}
+                    style={{ marginRight: 10 }}
+                    onPress={handleDateDecrement}
+                />
+                <Text>
+                    {date.getDate()}. {monthNames[date.getMonth()]} {date.getFullYear()}
+                </Text>
+                <Icon
+                    source={require("../../assets/icons/right-arrow.png")}
+                    width={14}
+                    height={14}
+                    style={{ marginLeft: 10 }}
+                    onPress={handleDateIncrement}
+                />
+            </View>
+            {secondDate && (
+                <Text centered size={10}>
+                    {date.getDate() + 1}. {monthNames[date.getMonth() + 1]} {date.getFullYear()}
+                </Text>
+            )}
         </View>
     );
 };

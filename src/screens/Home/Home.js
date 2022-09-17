@@ -37,6 +37,36 @@ const GraphData = {
     }
 };
 
+const RenderDailyGraph = () => {
+    return (
+        <MainGraph
+            data={GraphData[FILTERS.DAILY].data}
+            labels={GraphData[FILTERS.DAILY].labels}
+            subLabels={GraphData[FILTERS.DAILY].subLabels}
+        />
+    );
+};
+
+const RenderWeeklyGraph = () => {
+    return (
+        <MainGraph
+            data={GraphData[FILTERS.WEEKLY].data}
+            labels={GraphData[FILTERS.WEEKLY].labels}
+            subLabels={GraphData[FILTERS.WEEKLY].subLabels}
+        />
+    );
+};
+
+const RenderMonthlyGraph = () => {
+    return (
+        <MainGraph
+            data={GraphData[FILTERS.MONTHLY].data}
+            labels={GraphData[FILTERS.MONTHLY].labels}
+            subLabels={GraphData[FILTERS.MONTHLY].subLabels}
+        />
+    );
+};
+
 const PeriodItem = () => {
     return (
         <View>
@@ -90,7 +120,7 @@ const Home = (props) => {
                     </TouchableOpacity>
 
                     <Text color={AppColors.PrimaryBlue} size={17}>
-                        AIR4ME
+                        {selected === FILTERS.DAILY ? "AIR4ME" : "FLAIR"}
                     </Text>
                     <TouchableOpacity
                         onPress={() => navigation.navigate(APP_ROUTES.ACTIVATE_DEVICE)}
@@ -105,13 +135,11 @@ const Home = (props) => {
                 </View>
                 <Filter style={styles.filters} selected={selected} setSelected={setSelected} />
 
-                <DateFilter />
+                <DateFilter secondDate={selected === FILTERS.MONTHLY} />
 
-                <MainGraph
-                    data={GraphData[selected].data}
-                    labels={GraphData[selected].labels}
-                    subLabels={GraphData[selected].subLabels}
-                />
+                {selected === FILTERS.DAILY && RenderDailyGraph()}
+                {selected === FILTERS.WEEKLY && RenderWeeklyGraph()}
+                {selected === FILTERS.MONTHLY && RenderMonthlyGraph()}
 
                 <View style={{ position: "relative" }}>
                     <Emoji source={require("../../assets/icons/meh.png")} left={"8%"} />
@@ -402,4 +430,3 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
-
