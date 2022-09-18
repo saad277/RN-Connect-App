@@ -6,6 +6,7 @@ import { AppColors } from "../../style";
 import { APP_ROUTES } from "../../routes";
 import { Text } from "../../components/Text";
 import { Icon } from "../../components/Icon";
+import { Modal } from "../../components/Modal";
 import { ProgressCircle } from "../../components/ProgressCircle";
 import Filter, { FILTERS } from "./Filter";
 import DateFilter from "./DateFilter";
@@ -325,6 +326,103 @@ const Home = (props) => {
                     </View>
                 </View>
             </ScrollView>
+            <Modal>
+                <View style={styles.modalOne}>
+                    <View>
+                        <View style={styles.rescue}>
+                            <Text color={AppColors.White} size={14}>
+                                Rescue Drugs
+                            </Text>
+                        </View>
+                        <View style={styles.inhaler}>
+                            <Icon
+                                source={require("../../assets/icons/inhaler-blue.png")}
+                                width={45}
+                                height={45}
+                                color={AppColors.White}
+                            />
+                        </View>
+                    </View>
+
+                    <View>
+                        <View style={styles.rescue}>
+                            <Text color={AppColors.White} size={14}>
+                                Regular Drugs
+                            </Text>
+                        </View>
+                        <View style={styles.inhaler}>
+                            <Icon
+                                source={require("../../assets/icons/inhaler-blue.png")}
+                                width={45}
+                                height={45}
+                                color={AppColors.White}
+                            />
+                        </View>
+                    </View>
+                </View>
+            </Modal>
+
+            <Modal>
+                <View style={{ justifyContent: "center", paddingTop: 80 }}>
+                    <Text color={AppColors.White} size={21} centered>
+                        How are you feeling?
+                    </Text>
+                    <View style={styles.feelingWrapper}>
+                        <View>
+                            <Icon
+                                source={require("../../assets/icons/happy.png")}
+                                width={43}
+                                height={43}
+                            />
+                            <Text topSpacing={6} size={13} centered color="#42a344">
+                                Great
+                            </Text>
+                        </View>
+
+                        <View>
+                            <Icon
+                                source={require("../../assets/icons/smile.png")}
+                                width={43}
+                                height={43}
+                            />
+                            <Text topSpacing={6} size={13} centered color="#9be494">
+                                Good
+                            </Text>
+                        </View>
+
+                        <View>
+                            <Icon
+                                source={require("../../assets/icons/meh.png")}
+                                width={43}
+                                height={43}
+                            />
+                            <Text topSpacing={6} centered size={13} color="#1736a6">
+                                Ok
+                            </Text>
+                        </View>
+                        <View>
+                            <Icon
+                                source={require("../../assets/icons/sad.png")}
+                                width={43}
+                                height={43}
+                            />
+                            <Text topSpacing={6} centered size={13} color="#ff783c">
+                                Anxious
+                            </Text>
+                        </View>
+                        <View>
+                            <Icon
+                                source={require("../../assets/icons/shocked.png")}
+                                width={43}
+                                height={43}
+                            />
+                            <Text topSpacing={6} centered size={13} color="#ff4141">
+                                Terrible
+                            </Text>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
         </SafeAreaView>
     );
 };
@@ -426,6 +524,35 @@ const styles = StyleSheet.create({
         width: 14,
         height: 14,
         borderRadius: 14 / 2
+    },
+    modalOne: {
+        justifyContent: "space-between",
+        alignItems: "center",
+        flex: 1,
+        paddingVertical: 60
+    },
+    rescue: {
+        backgroundColor: AppColors.Black,
+        borderRadius: 8,
+        padding: 12,
+        width: 140,
+        alignItems: "center"
+    },
+    inhaler: {
+        alignSelf: "center",
+        backgroundColor: AppColors.PrimaryBlue,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 90 / 2,
+        padding: 10,
+        marginTop: 10
+    },
+    feelingWrapper: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginTop: 80,
+        marginHorizontal: 20
     }
 });
 
