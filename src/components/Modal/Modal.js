@@ -11,7 +11,7 @@ const RNModal = (props) => {
     return (
         <Modal animationType="slide" transparent={true} visible={isOpen}>
             <View style={styles.container}>
-                <TouchableOpacity style={styles.cross}>
+                <TouchableOpacity style={styles.cross} onPress={onClose}>
                     <Text color={AppColors.White}>X</Text>
                 </TouchableOpacity>
                 <View style={[styles.modalView]}>{children}</View>

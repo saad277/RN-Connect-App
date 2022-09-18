@@ -14,12 +14,6 @@ import MainGraph from "./MainGraph";
 import DailyGraph from "./DailyGraph";
 import WeeklyGraph from "./WeeklyGraph";
 
-const AVERAGE_TEXT = {
-    [FILTERS.DAILY]: "Avg. usage per time period",
-    [FILTERS.WEEKLY]: "Avg. ",
-    [FILTERS.MONTHLY]: ""
-};
-
 const GraphData = {
     [FILTERS.DAILY]: {
         data: [20, 45, 28, 80, 99, 43, 50],
@@ -102,6 +96,8 @@ const Emoji = (props) => {
 const Home = (props) => {
     const { navigation } = props;
     const [selected, setSelected] = useState(FILTERS.DAILY);
+    const [feelingModal, setFeelingModal] = useState(false);
+    const [drugModal, setDrugModal] = useState(false);
 
     return (
         <SafeAreaView>
@@ -111,26 +107,24 @@ const Home = (props) => {
                 showsVerticalScrollIndicator={false}
             >
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={() => navigation.navigate(APP_ROUTES.PROFILE)}>
+                    <TouchableOpacity onPress={() => setFeelingModal(true)}>
                         <Icon
-                            source={require("../../assets/avatar.png")}
+                            source={require("../../assets/icons/smile.png")}
                             width={24}
                             height={24}
                             style={{ borderRadius: 24 / 2 }}
+                            color={AppColors.PrimaryBlue}
                         />
                     </TouchableOpacity>
 
                     <Text color={AppColors.PrimaryBlue} size={17}>
                         {selected === FILTERS.DAILY ? "AIR4ME" : "FLAIR"}
                     </Text>
-                    <TouchableOpacity
-                        onPress={() => navigation.navigate(APP_ROUTES.ACTIVATE_DEVICE)}
-                    >
+                    <TouchableOpacity onPress={() => setDrugModal(true)}>
                         <Icon
-                            source={require("../../assets/icons/add.png")}
-                            width={24}
-                            height={24}
-                            style={{ borderRadius: 24 / 2 }}
+                            source={require("../../assets/icons/inhaler-blue.png")}
+                            width={27}
+                            height={27}
                         />
                     </TouchableOpacity>
                 </View>
@@ -168,12 +162,16 @@ const Home = (props) => {
                                 Average Usage
                             </Text>
                             <Text color={AppColors.DarkBlue} size={11}>
-                                (based on last 10 days)
+                                {selected === FILTERS.DAILY && "(based on last 10 days)"}
+                                {selected === FILTERS.WEEKLY && "(based on last 10 weeks)"}
+                                {selected === FILTERS.MONTHLY && "(based on last 10 months)"}
                             </Text>
                         </View>
                     </View>
                     <Text color={AppColors.DarkBlue} size={24}>
-                        3.5
+                        {selected === FILTERS.DAILY && "3.5"}
+                        {selected === FILTERS.WEEKLY && "25.2"}
+                        {selected === FILTERS.MONTHLY && "105.4"}
                     </Text>
                 </View>
 
@@ -216,7 +214,9 @@ const Home = (props) => {
                     }}
                 >
                     <Text color={AppColors.DarkBlue} topSpacing={14} leftSpacing={14}>
-                        Avg. usage per time period
+                        {(selected === FILTERS.DAILY || selected === FILTERS.MONTHLY) &&
+                            "Avg. usage per time period"}
+                        {selected === FILTERS.WEEKLY && "Time repartition"}
                     </Text>
 
                     <DailyGraph />
@@ -231,7 +231,8 @@ const Home = (props) => {
                         }}
                     >
                         <Text color={AppColors.DarkBlue} topSpacing={14} leftSpacing={14}>
-                            Avg. usage per day
+                            {selected === FILTERS.MONTHLY && "Avg. usage per day"}
+                            {selected === FILTERS.WEEKLY && "Avg. usage per day of the week"}
                         </Text>
 
                         <WeeklyGraph />
@@ -264,7 +265,8 @@ const Home = (props) => {
                             }}
                         >
                             <Text color={AppColors.DarkBlue} size={18}>
-                                4/30
+                                {selected === FILTERS.WEEKLY && "0/7"}
+                                {selected === FILTERS.MONTHLY && "4/30"}
                             </Text>
                         </View>
                     </View>
@@ -289,7 +291,7 @@ const Home = (props) => {
                         }}
                     >
                         <Text color={AppColors.DarkBlue} size={15} topSpacing={14} leftSpacing={14}>
-                            Average Usage
+                            Adherence
                         </Text>
                         <Text
                             color={AppColors.DarkBlue}
@@ -297,7 +299,7 @@ const Home = (props) => {
                             rightSpacing={20}
                             topSpacing={14}
                         >
-                            3.5
+                            87%
                         </Text>
                     </View>
                 </View>
@@ -326,7 +328,7 @@ const Home = (props) => {
                     </View>
                 </View>
             </ScrollView>
-            <Modal>
+            <Modal isOpen={drugModal} onClose={() => setDrugModal(false)}>
                 <View style={styles.modalOne}>
                     <View>
                         <View style={styles.rescue}>
@@ -362,7 +364,7 @@ const Home = (props) => {
                 </View>
             </Modal>
 
-            <Modal>
+            <Modal isOpen={feelingModal} onClose={() => setFeelingModal(false)}>
                 <View style={{ justifyContent: "center", paddingTop: 80 }}>
                     <Text color={AppColors.White} size={21} centered>
                         How are you feeling?
