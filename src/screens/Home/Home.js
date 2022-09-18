@@ -62,12 +62,12 @@ const RenderMonthlyGraph = () => {
     );
 };
 
-const PeriodItem = () => {
+const PeriodItem = ({ val = 113 }) => {
     return (
         <View>
             <View style={styles.number}>
                 <Text color={AppColors.DarkBlue} size={28}>
-                    113
+                    {val}
                 </Text>
             </View>
             <Text size={8} color={AppColors.DarkBlue} topSpacing={10} centered>
@@ -187,7 +187,15 @@ const Home = (props) => {
                             marginLeft: 10
                         }}
                     >
-                        <PeriodItem />
+                        <PeriodItem
+                            val={
+                                selected === FILTERS.DAILY
+                                    ? 2
+                                    : selected === FILTERS.WEEKLY
+                                    ? 26
+                                    : 113
+                            }
+                        />
                         <View>
                             <View style={styles.line} />
                             <Text
@@ -201,7 +209,15 @@ const Home = (props) => {
                             </Text>
                             <View style={styles.line} />
                         </View>
-                        <PeriodItem />
+                        <PeriodItem
+                            val={
+                                selected === FILTERS.DAILY
+                                    ? 4
+                                    : selected === FILTERS.WEEKLY
+                                    ? 22
+                                    : 122
+                            }
+                        />
                     </View>
                 </View>
 
