@@ -37,20 +37,21 @@ const BarChart = ({
         return data.map((val, i) => {
             const barHeight = chartBuilder.calcDataPointHeight(val);
             return (
-                <G key={Math.random()}>
-                    <Rect
-                        x={
-                            i * chartBuilder.yLabelSlotWidth +
-                            slotGap / 2 +
-                            chartBuilder.leftAlignedXAxisLabelWidth
-                        }
-                        y={baseHeight - barHeight}
-                        rx={barRadius}
-                        width={barWidth}
-                        height={barHeight < 0 ? 0 : barHeight}
-                        fill={barColor}
-                    />
-                    {/* <Text
+                labels[i] && (
+                    <G key={Math.random()}>
+                        <Rect
+                            x={
+                                i * chartBuilder.yLabelSlotWidth +
+                                slotGap / 2 +
+                                chartBuilder.leftAlignedXAxisLabelWidth
+                            }
+                            y={baseHeight - barHeight}
+                            rx={barRadius}
+                            width={barWidth}
+                            height={barHeight < 0 ? 0 : barHeight}
+                            fill={barColor}
+                        />
+                        {/* <Text
                         x={
                             (i * chartBuilder.yLabelSlotWidth +
                             slotGap +
@@ -62,7 +63,8 @@ const BarChart = ({
                     >
                         100%
                     </Text> */}
-                </G>
+                    </G>
+                )
             );
         });
     };

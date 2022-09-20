@@ -8,6 +8,7 @@ import { Text } from "../../components/Text";
 import { Icon } from "../../components/Icon";
 import { Modal } from "../../components/Modal";
 import { ProgressCircle } from "../../components/ProgressCircle";
+import { formatDate } from "../../utils/dateUtils";
 import Filter, { FILTERS } from "./Filter";
 import DateFilter, { monthNames } from "./DateFilter";
 import MainGraph from "./MainGraph";
@@ -52,10 +53,30 @@ const Home = (props) => {
     const [drugModal, setDrugModal] = useState(false);
     const [date, setDate] = useState(new Date("2022-06-01"));
 
+    function formatDay(val = 0) {
+        let incDate = date.getDate() + val;
+
+        let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+
+        if (incDate > lastDay) {
+            return "";
+        }
+
+        return formatDate(incDate);
+    }
+
     const GraphData = {
         [FILTERS.DAILY]: {
             data: [20, 45, 28, 80, 99, 43, 50],
-            labels: ["01", "02", "03", "04", "05", "06", "07"],
+            labels: [
+                formatDay(),
+                formatDay(1),
+                formatDay(2),
+                formatDay(3),
+                formatDay(4),
+                formatDay(5),
+                formatDay(6)
+            ],
             subLabels: [
                 monthNames[date.getMonth()].slice(0, 3),
                 monthNames[date.getMonth()].slice(0, 3),
@@ -68,7 +89,15 @@ const Home = (props) => {
         },
         [FILTERS.WEEKLY]: {
             data: [15, 30, 40, 24, 16, 23, 32],
-            labels: ["02-09", "09-16", "16-32", "23-30", "30-70", "21-28", "28-04"],
+            labels: [
+                formatDay(),
+                formatDay(1),
+                formatDay(2),
+                formatDay(3),
+                formatDay(4),
+                formatDay(5),
+                formatDay(6)
+            ],
             subLabels: [
                 monthNames[date.getMonth()].slice(0, 3),
                 monthNames[date.getMonth()].slice(0, 3),
@@ -82,22 +111,36 @@ const Home = (props) => {
         [FILTERS.MONTHLY]: {
             data: [31, 42, 11, 55, 62, 4, 20],
             labels: [
-                `13 ${monthNames[date.getMonth()].slice(0, 3)}`,
-                `12 ${monthNames[date.getMonth()].slice(0, 3)}`,
-                `03 ${monthNames[date.getMonth()].slice(0, 3)}`,
-                `04 ${monthNames[date.getMonth()].slice(0, 3)}`,
-                `21 ${monthNames[date.getMonth()].slice(0, 3)}`,
-                `06 ${monthNames[date.getMonth()].slice(0, 3)}`,
-                `07 ${monthNames[date.getMonth()].slice(0, 3)}`
+                `${formatDay()} ${monthNames[date.getMonth()].slice(0, 3)}`,
+                `${formatDay(1)}  ${monthNames[date.getMonth()].slice(0, 3)}`,
+                `${formatDay(2)}  ${monthNames[date.getMonth()].slice(0, 3)}`,
+                `${formatDay(3)}  ${monthNames[date.getMonth()].slice(0, 3)}`,
+                `${formatDay(4)}  ${monthNames[date.getMonth()].slice(0, 3)}`,
+                `${formatDay(5)}  ${monthNames[date.getMonth()].slice(0, 3)}`,
+                `${formatDay(6)}  ${monthNames[date.getMonth()].slice(0, 3)}`
             ],
             subLabels: [
-                `-12 ${monthNames[date.getMonth()].slice(0, 3).toLowerCase()}`,
-                `-13 ${monthNames[date.getMonth()].slice(0, 3).toLowerCase()}`,
-                `-07 ${monthNames[date.getMonth()].slice(0, 3).toLowerCase()}`,
-                `-16 ${monthNames[date.getMonth()].slice(0, 3).toLowerCase()}`,
-                `-13 ${monthNames[date.getMonth()].slice(0, 3).toLowerCase()}`,
-                `-09 ${monthNames[date.getMonth()].slice(0, 3).toLowerCase()}`,
-                `-15 ${monthNames[date.getMonth()].slice(0, 3).toLowerCase()}`
+                `-${formatDay(1)} ${
+                    formatDay(1) && monthNames[date.getMonth() + 1].slice(0, 3).toLowerCase()
+                }`,
+                `-${formatDay(2)} ${
+                    formatDay(2) && monthNames[date.getMonth() + 1].slice(0, 3).toLowerCase()
+                }`,
+                `-${formatDay(3)} ${
+                    formatDay(3) && monthNames[date.getMonth() + 1].slice(0, 3).toLowerCase()
+                }`,
+                `-${formatDay(4)} ${
+                    formatDay(4) && monthNames[date.getMonth() + 1].slice(0, 3).toLowerCase()
+                }`,
+                `-${formatDay(5)} ${
+                    formatDay(5) && monthNames[date.getMonth() + 1].slice(0, 3).toLowerCase()
+                }`,
+                `-${formatDay(6)} ${
+                    formatDay(6) && monthNames[date.getMonth() + 1].slice(0, 3).toLowerCase()
+                }`,
+                `-${formatDay(7)} ${
+                    formatDay(7) && monthNames[date.getMonth() + 1].slice(0, 3).toLowerCase()
+                }`
             ]
         }
     };
