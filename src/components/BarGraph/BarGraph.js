@@ -7,8 +7,8 @@ const BarChart = ({
     data,
     labels,
     subLabels,
-    height=0,
-    extraHeight=0,
+    height = 0,
+    extraHeight = 0,
     width,
     barRadius = 0,
     barWidthPercentage = 0.7,
@@ -32,6 +32,7 @@ const BarChart = ({
     const baseHeight = height - chartBuilder.yAxisLabelHeight;
     const barWidth = chartBuilder.yLabelSlotWidth * barWidthPercentage;
     const slotGap = chartBuilder.yLabelSlotWidth - barWidth;
+
     const renderBars = () => {
         return data.map((val, i) => {
             const barHeight = chartBuilder.calcDataPointHeight(val);
@@ -67,7 +68,7 @@ const BarChart = ({
     };
     return (
         <View style={style}>
-            <Svg height={height + extraHeight} width={width}>
+            <Svg height={height + extraHeight} width={width} key={Math.random()}>
                 <G>
                     {baseConfig.hasXAxisBackgroundLines !== false
                         ? chartBuilder.renderXAxisLines()
@@ -85,4 +86,3 @@ const BarChart = ({
     );
 };
 export default BarChart;
-

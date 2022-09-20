@@ -9,58 +9,10 @@ import { Icon } from "../../components/Icon";
 import { Modal } from "../../components/Modal";
 import { ProgressCircle } from "../../components/ProgressCircle";
 import Filter, { FILTERS } from "./Filter";
-import DateFilter from "./DateFilter";
+import DateFilter, { monthNames } from "./DateFilter";
 import MainGraph from "./MainGraph";
 import DailyGraph from "./DailyGraph";
 import WeeklyGraph from "./WeeklyGraph";
-
-const GraphData = {
-    [FILTERS.DAILY]: {
-        data: [20, 45, 28, 80, 99, 43, 50],
-        labels: ["01", "02", "03", "04", "05", "06", "07"],
-        subLabels: ["Jun", "Jun", "Jun", "Jun", "Jun", "Jun", "Jun"]
-    },
-    [FILTERS.WEEKLY]: {
-        data: [15, 30, 40, 24, 16, 23, 32],
-        labels: ["02-09", "09-16", "16-32", "23-30", "30-70", "21-28", "28-04"],
-        subLabels: ["Jun", "Jun", "Jun", "Jun", "Jun", "Jun", "Jun"]
-    },
-    [FILTERS.MONTHLY]: {
-        data: [31, 42, 11, 55, 62, 4, 20],
-        labels: ["13 aug", "12 sep", "03 nov", "04 jan", "21 mar", "06 may", "07 july"],
-        subLabels: ["-12 sep", "-13 oct", "-07 dec", "-16 feb", "-13 apr", "-09 jun", "-15 aug"]
-    }
-};
-
-const RenderDailyGraph = () => {
-    return (
-        <MainGraph
-            data={GraphData[FILTERS.DAILY].data}
-            labels={GraphData[FILTERS.DAILY].labels}
-            subLabels={GraphData[FILTERS.DAILY].subLabels}
-        />
-    );
-};
-
-const RenderWeeklyGraph = () => {
-    return (
-        <MainGraph
-            data={GraphData[FILTERS.WEEKLY].data}
-            labels={GraphData[FILTERS.WEEKLY].labels}
-            subLabels={GraphData[FILTERS.WEEKLY].subLabels}
-        />
-    );
-};
-
-const RenderMonthlyGraph = () => {
-    return (
-        <MainGraph
-            data={GraphData[FILTERS.MONTHLY].data}
-            labels={GraphData[FILTERS.MONTHLY].labels}
-            subLabels={GraphData[FILTERS.MONTHLY].subLabels}
-        />
-    );
-};
 
 const PeriodItem = ({ val = 113 }) => {
     return (
@@ -98,6 +50,57 @@ const Home = (props) => {
     const [selected, setSelected] = useState(FILTERS.DAILY);
     const [feelingModal, setFeelingModal] = useState(false);
     const [drugModal, setDrugModal] = useState(false);
+    const [date, setDate] = useState(new Date("2022-06-01"));
+
+    const GraphData = {
+        [FILTERS.DAILY]: {
+            data: [20, 45, 28, 80, 99, 43, 50],
+            labels: ["01", "02", "03", "04", "05", "06", "07"],
+            subLabels: [
+                monthNames[date.getMonth()].slice(0, 3),
+                monthNames[date.getMonth()].slice(0, 3),
+                monthNames[date.getMonth()].slice(0, 3),
+                monthNames[date.getMonth()].slice(0, 3),
+                monthNames[date.getMonth()].slice(0, 3),
+                monthNames[date.getMonth()].slice(0, 3),
+                monthNames[date.getMonth()].slice(0, 3)
+            ]
+        },
+        [FILTERS.WEEKLY]: {
+            data: [15, 30, 40, 24, 16, 23, 32],
+            labels: ["02-09", "09-16", "16-32", "23-30", "30-70", "21-28", "28-04"],
+            subLabels: [
+                monthNames[date.getMonth()].slice(0, 3),
+                monthNames[date.getMonth()].slice(0, 3),
+                monthNames[date.getMonth()].slice(0, 3),
+                monthNames[date.getMonth()].slice(0, 3),
+                monthNames[date.getMonth()].slice(0, 3),
+                monthNames[date.getMonth()].slice(0, 3),
+                monthNames[date.getMonth()].slice(0, 3)
+            ]
+        },
+        [FILTERS.MONTHLY]: {
+            data: [31, 42, 11, 55, 62, 4, 20],
+            labels: [
+                `13 ${monthNames[date.getMonth()].slice(0, 3)}`,
+                `12 ${monthNames[date.getMonth()].slice(0, 3)}`,
+                `03 ${monthNames[date.getMonth()].slice(0, 3)}`,
+                `04 ${monthNames[date.getMonth()].slice(0, 3)}`,
+                `21 ${monthNames[date.getMonth()].slice(0, 3)}`,
+                `06 ${monthNames[date.getMonth()].slice(0, 3)}`,
+                `07 ${monthNames[date.getMonth()].slice(0, 3)}`
+            ],
+            subLabels: [
+                `-12 ${monthNames[date.getMonth()].slice(0, 3).toLowerCase()}`,
+                `-13 ${monthNames[date.getMonth()].slice(0, 3).toLowerCase()}`,
+                `-07 ${monthNames[date.getMonth()].slice(0, 3).toLowerCase()}`,
+                `-16 ${monthNames[date.getMonth()].slice(0, 3).toLowerCase()}`,
+                `-13 ${monthNames[date.getMonth()].slice(0, 3).toLowerCase()}`,
+                `-09 ${monthNames[date.getMonth()].slice(0, 3).toLowerCase()}`,
+                `-15 ${monthNames[date.getMonth()].slice(0, 3).toLowerCase()}`
+            ]
+        }
+    };
 
     return (
         <SafeAreaView>
@@ -130,11 +133,16 @@ const Home = (props) => {
                 </View>
                 <Filter style={styles.filters} selected={selected} setSelected={setSelected} />
 
-                <DateFilter secondDate={selected === FILTERS.MONTHLY} />
-
-                {selected === FILTERS.DAILY && RenderDailyGraph()}
-                {selected === FILTERS.WEEKLY && RenderWeeklyGraph()}
-                {selected === FILTERS.MONTHLY && RenderMonthlyGraph()}
+                <DateFilter
+                    secondDate={selected === FILTERS.MONTHLY}
+                    date={date}
+                    setDate={setDate}
+                />
+                <MainGraph
+                    data={GraphData[selected].data}
+                    labels={GraphData[selected].labels}
+                    subLabels={GraphData[selected].subLabels}
+                />
 
                 <View style={{ position: "relative" }}>
                     <Emoji source={require("../../assets/icons/meh.png")} left={"8%"} />

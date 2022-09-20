@@ -233,11 +233,13 @@ export default class ChartBuilder {
                         fontSize={fontSize}
                         fontWeight={fontWeight}
                         fill={color}
+                        key={label}
                     >
                         {label}
                     </Text>
                     {!!this.sublabels[i] && (
                         <Text
+                            key={this.sublabels[i]}
                             origin={`${x}, ${y}`}
                             x={x}
                             y={y + 20}
@@ -256,4 +258,3 @@ export default class ChartBuilder {
         });
     }
 }
-

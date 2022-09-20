@@ -4,7 +4,7 @@ import { View, StyleSheet } from "react-native";
 import { Icon } from "../../components/Icon";
 import { Text } from "../../components/Text";
 
-const monthNames = [
+export const monthNames = [
     "Jan",
     "Feb",
     "March",
@@ -20,8 +20,7 @@ const monthNames = [
 ];
 
 const DateFilter = (props) => {
-    const { secondDate = false } = props;
-    const [date, setDate] = useState(new Date("2022-06-01"));
+    const { secondDate = false, date, setDate } = props;
 
     const handleDateIncrement = () => {
         const result = new Date(new Date(date).setDate(new Date(date).getDate() + 1));
