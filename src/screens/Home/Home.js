@@ -155,11 +155,9 @@ const Home = (props) => {
                 <View style={styles.header}>
                     <TouchableOpacity onPress={() => setFeelingModal(true)}>
                         <Icon
-                            source={require("../../assets/icons/smile.png")}
-                            width={24}
-                            height={24}
-                            style={{ borderRadius: 24 / 2 }}
-                            color={AppColors.PrimaryBlue}
+                            source={require("../../assets/icons/smile-add.png")}
+                            width={34}
+                            height={34}
                         />
                     </TouchableOpacity>
 
