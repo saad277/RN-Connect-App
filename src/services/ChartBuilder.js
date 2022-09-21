@@ -139,7 +139,7 @@ export default class ChartBuilder {
         let yOffset = 0;
         let rotation = 0;
         let fontFamily = Platform.OS === "ios" ? "Avenir Next" : "Roboto";
-        let fontSize = 14;
+        let fontSize = 12;
         let fontWeight = 500;
         let color = "#000000";
         let prefix = "";
@@ -200,7 +200,7 @@ export default class ChartBuilder {
         let yOffset = 0;
         let rotation = 0;
         let fontFamily = Platform.OS === "ios" ? "Avenir Next" : "Roboto";
-        let fontSize = 14;
+        let fontSize = 12;
         let fontWeight = 500;
         let color = "#000000";
         let position = "bottom";

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, StyleSheet } from "react-native";
 
 import { Icon } from "../../components/Icon";
 import { Text } from "../../components/Text";
+import { FILTERS } from "./Filter";
 
 export const monthNames = [
     "Jan",
@@ -20,15 +21,28 @@ export const monthNames = [
 ];
 
 const DateFilter = (props) => {
-    const { secondDate = false, date, setDate } = props;
+    const { secondDate = false, date, setDate, filter } = props;
 
     const handleDateIncrement = () => {
-        const result = new Date(new Date(date).setDate(new Date(date).getDate() + 1));
+        let val = filter === FILTERS.WEEKLY ? 7 : 1;
+        const result = new Date(new Date(date).setDate(new Date(date).getDate() + val));
         setDate(result);
     };
     const handleDateDecrement = () => {
-        const result = new Date(new Date(date).setDate(new Date(date).getDate() - 1));
+        let val = filter === FILTERS.WEEKLY ? 7 : 1;
+        const result = new Date(new Date(date).setDate(new Date(date).getDate() - val));
         setDate(result);
+    };
+
+    const renderSecondDate = () => {
+        let incDate = date.getDate() + 1;
+        let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+
+        if (incDate > lastDay) {
+            return "";
+        }
+
+        return true;
     };
 
     return (
@@ -52,7 +66,7 @@ const DateFilter = (props) => {
                     onPress={handleDateIncrement}
                 />
             </View>
-            {secondDate && (
+            {secondDate && renderSecondDate() && (
                 <Text centered size={10}>
                     {date.getDate() + 1}. {monthNames[date.getMonth() + 1]} {date.getFullYear()}
                 </Text>

@@ -15,7 +15,7 @@ import MainGraph from "./MainGraph";
 import DailyGraph from "./DailyGraph";
 import WeeklyGraph from "./WeeklyGraph";
 
-const PeriodItem = ({ val = 113 }) => {
+const PeriodItem = ({ val = 113, startDate = "", endDate = "" }) => {
     return (
         <View>
             <View style={styles.number}>
@@ -24,7 +24,7 @@ const PeriodItem = ({ val = 113 }) => {
                 </Text>
             </View>
             <Text size={8} color={AppColors.DarkBlue} topSpacing={10} centered>
-                12 May 2022 - 11 June 2022
+                {startDate} - {endDate}
             </Text>
         </View>
     );
@@ -180,6 +180,7 @@ const Home = (props) => {
                     secondDate={selected === FILTERS.MONTHLY}
                     date={date}
                     setDate={setDate}
+                    filter={selected}
                 />
                 <MainGraph
                     data={GraphData[selected].data}
@@ -246,6 +247,14 @@ const Home = (props) => {
                                     ? 26
                                     : 113
                             }
+                            startDate={`${formatDay()} ${monthNames[date.getMonth()].slice(
+                                0,
+                                3
+                            )} ${date.getFullYear()}`}
+                            endDate={`${formatDay(12)} ${monthNames[date.getMonth() + 1].slice(
+                                0,
+                                3
+                            )} ${date.getFullYear()}`}
                         />
                         <View>
                             <View style={styles.line} />
@@ -268,6 +277,14 @@ const Home = (props) => {
                                     ? 22
                                     : 122
                             }
+                            startDate={`${formatDay()} ${monthNames[date.getMonth()].slice(
+                                0,
+                                3
+                            )} ${date.getFullYear()}`}
+                            endDate={`${formatDay(12)} ${monthNames[date.getMonth() + 1].slice(
+                                0,
+                                3
+                            )} ${date.getFullYear()}`}
                         />
                     </View>
                 </View>
