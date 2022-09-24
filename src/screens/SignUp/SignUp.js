@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Keyboard, TouchableWithoutFeedback } from "react-native";
+import {
+    View,
+    StyleSheet,
+    Keyboard,
+    TouchableWithoutFeedback,
+    TouchableOpacity
+} from "react-native";
+import Toast from "react-native-toast-message";
 
 import { AppColors } from "../../style";
 
@@ -7,13 +14,44 @@ import { Text } from "../../components/Text";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { CheckBox } from "../../components/CheckBox";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { FirebaseService } from "../../services/FirebaseService";
+
+const EmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const SignUp = (props) => {
     const { navigation } = props;
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isChecked, setIsChecked] = useState(false);
+    const [error, setError] = useState({});
+
+    const handleSubmit = () => {
+        let flag = false;
+        setError({});
+        if (!EmailRegex.test(email)) {
+            setError({ email: true });
+            flag = true;
+        }
+
+        if (password?.trim().length < 6) {
+            setError({ ...(flag && { email: true }), password: true });
+            flag = true;
+        }
+
+        if (flag) return;
+
+        FirebaseService.createUser(email, password)
+            .then((res) => {
+                Toast.show({
+                    type: "success",
+                    text1: "User created successfully"
+                });
+                //navigation.goBack();
+            })
+            .catch((err) => {
+                console.log("err");
+            });
+    };
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -33,6 +71,7 @@ const SignUp = (props) => {
                     label="Email"
                     value={email}
                     onChange={setEmail}
+                    error={error?.email && "Please enter a valid email"}
                 />
                 <Input
                     containerStyles={styles.input}
@@ -40,6 +79,7 @@ const SignUp = (props) => {
                     value={password}
                     onChange={setPassword}
                     secureText={true}
+                    error={error?.password && "Please enter a password with atleast 6 characters"}
                 />
 
                 <View style={{ flexDirection: "row", marginLeft: 30 }}>
@@ -58,7 +98,7 @@ const SignUp = (props) => {
                     Privacy Policy.
                 </Text>
 
-                <Button text="Continue" containerStyles={styles.btn} onPress={navigation.goBack} />
+                <Button text="Continue" containerStyles={styles.btn} onPress={handleSubmit} />
 
                 <View style={{ flexDirection: "row", justifyContent: "center" }}>
                     <Text

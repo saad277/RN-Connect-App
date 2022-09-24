@@ -21,22 +21,24 @@ const Input = (props) => {
     } = props;
 
     return (
-        <View style={[styles.wrapper, containerStyles]}>
-            <Text bottomSpacing={0} size={14} leftSpacing={5} color={AppColors.PrimaryBlue}>
-                {label}
-            </Text>
-            <View style={[styles.container, wrapperStyles]}>
-                <TextInput
-                    style={[styles.input, inputStyles]}
-                    placeholder={placeholder}
-                    placeholderTextColor={AppColors.PrimaryGray}
-                    onChangeText={onChange}
-                    value={value}
-                    secureTextEntry={secureText}
-                    {...rest}
-                />
+        <View style={containerStyles}>
+            <View style={[styles.wrapper]}>
+                <Text bottomSpacing={0} size={14} leftSpacing={5} color={AppColors.PrimaryBlue}>
+                    {label}
+                </Text>
+                <View style={[styles.container, wrapperStyles]}>
+                    <TextInput
+                        style={[styles.input, inputStyles]}
+                        placeholder={placeholder}
+                        placeholderTextColor={AppColors.PrimaryGray}
+                        onChangeText={onChange}
+                        value={value}
+                        secureTextEntry={secureText}
+                        {...rest}
+                    />
 
-                {!!icon && <Image source={icon} style={styles.icon} resizeMode="contain" />}
+                    {!!icon && <Image source={icon} style={styles.icon} resizeMode="contain" />}
+                </View>
             </View>
             {Boolean(error) && <Text style={styles.error}>{error}</Text>}
         </View>
@@ -63,7 +65,8 @@ const styles = StyleSheet.create({
         color: AppColors.Black
     },
     error: {
-        color: AppColors.Red
+        color: AppColors.Red,
+        fontSize: 11
     },
     icon: {
         width: 14,
