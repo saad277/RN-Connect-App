@@ -24,6 +24,7 @@ const SignUp = (props) => {
     const [password, setPassword] = useState("");
     const [isChecked, setIsChecked] = useState(false);
     const [error, setError] = useState({});
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = () => {
         let flag = false;
@@ -40,16 +41,26 @@ const SignUp = (props) => {
 
         if (flag) return;
 
+        if (!isChecked) {
+            Toast.show({
+                type: "info",
+                text1: "Please agree terms of service !"
+            });
+            return;
+        }
+
+        setLoading(true);
+
         FirebaseService.createUser(email, password)
             .then((res) => {
                 Toast.show({
                     type: "success",
                     text1: "User created successfully"
                 });
-                //navigation.goBack();
             })
-            .catch((err) => {
-                console.log("err");
+            .catch((err) => {})
+            .finally(() => {
+                setLoading(false);
             });
     };
 
@@ -98,7 +109,12 @@ const SignUp = (props) => {
                     Privacy Policy.
                 </Text>
 
-                <Button text="Continue" containerStyles={styles.btn} onPress={handleSubmit} />
+                <Button
+                    text="Continue"
+                    isLoading={loading}
+                    containerStyles={styles.btn}
+                    onPress={handleSubmit}
+                />
 
                 <View style={{ flexDirection: "row", justifyContent: "center" }}>
                     <Text
