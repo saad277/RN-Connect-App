@@ -90,13 +90,13 @@ const Home = (props) => {
         [FILTERS.WEEKLY]: {
             data: [15, 30, 40, 24, 16, 23, 32],
             labels: [
-                formatDay(),
-                formatDay(1),
-                formatDay(2),
-                formatDay(3),
-                formatDay(4),
-                formatDay(5),
-                formatDay(6)
+                `${formatDay()}${formatDay(9) && "- " + formatDay(9)}`,
+                `${formatDay()}${formatDay(9) && "- " + formatDay(10)}`,
+                `${formatDay()}${formatDay(9) && "- " + formatDay(11)}`,
+                `${formatDay()}${formatDay(9) && "- " + formatDay(12)}`,
+                `${formatDay()}${formatDay(9) && "- " + formatDay(13)}`,
+                `${formatDay()}${formatDay(9) && "- " + formatDay(14)}`,
+                `${formatDay()}${formatDay(9) && "- " + formatDay(15)}`
             ],
             subLabels: [
                 monthNames[date.getMonth()].slice(0, 3),
