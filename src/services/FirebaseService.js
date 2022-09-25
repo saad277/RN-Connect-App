@@ -35,9 +35,7 @@ class FirebaseService {
     static signIn = (email, password) => {
         return auth()
             .signInWithEmailAndPassword(email, password)
-            .then((res) => {
-                console.log(res);
-            })
+            .then()
             .catch((err) => {
                 if (err.code === "auth/user-not-found") {
                     Toast.show({
@@ -53,6 +51,21 @@ class FirebaseService {
                     });
                 }
 
+                return Promise.reject(err);
+            });
+    };
+
+    static resetPasswordWithEmail = (email) => {
+        return auth()
+            .sendPasswordResetEmail(email)
+            .then()
+            .catch((err) => {
+                if (err.code == "auth/user-not-found") {
+                    Toast.show({
+                        type: "error",
+                        text1: "That email address is invalid!"
+                    });
+                }
                 return Promise.reject(err);
             });
     };

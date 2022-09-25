@@ -94,9 +94,15 @@ const Login = (props) => {
                     containerStyles={styles.btn}
                     onPress={handleSubmit}
                 />
-                <Text color={AppColors.PrimaryGray} centered size={12} topSpacing={14}>
-                    Forgot Password?
-                </Text>
+
+                <TouchableOpacity
+                    style={{ marginTop: 14, alignSelf: "center" }}
+                    onPress={() => navigation.navigate(APP_ROUTES.FORGOT_PASSWORD)}
+                >
+                    <Text color={AppColors.PrimaryGray} centered size={12}>
+                        Forgot Password?
+                    </Text>
+                </TouchableOpacity>
 
                 <Text color={AppColors.PrimaryGray} centered size={14} topSpacing={84}>
                     Dont't have an account?

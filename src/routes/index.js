@@ -1,6 +1,7 @@
 export const APP_ROUTES = {
     LOGIN: "Login",
     SIGNUP: "SignUp",
+    FORGOT_PASSWORD: "ForgotPassword",
     MEDICATION_TYPE: "MedicationType",
     ACTIVATE_DEVICE: "ActivateDevice",
     CONNECT: "Connect",
