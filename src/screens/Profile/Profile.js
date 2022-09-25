@@ -85,7 +85,12 @@ const Profile = (props) => {
                     onPress={() => navigation.navigate(APP_ROUTES.NOTIFICATION)}
                 />
                 <ListItem title="Profile" text="A couple infos about you" />
-                <ListItem title="Device" text="Add or change" style={styles.radiusBottom} />
+                <ListItem
+                    title="Device"
+                    text="Add or change"
+                    style={styles.radiusBottom}
+                    onPress={() => navigation.navigate(APP_ROUTES.MEDICATION_TYPE)}
+                />
                 <Text
                     color={AppColors.PrimaryBlue}
                     leftSpacing={20}

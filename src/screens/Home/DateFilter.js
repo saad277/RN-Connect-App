@@ -52,7 +52,7 @@ const DateFilter = (props) => {
                     source={require("../../assets/icons/left-arrow.png")}
                     width={14}
                     height={14}
-                    style={{ marginRight: 10 }}
+                    style={{ marginRight: 2 }}
                     onPress={handleDateDecrement}
                 />
                 <Text>
@@ -62,7 +62,7 @@ const DateFilter = (props) => {
                     source={require("../../assets/icons/right-arrow.png")}
                     width={14}
                     height={14}
-                    style={{ marginLeft: 10 }}
+                    style={{ marginLeft: 2 }}
                     onPress={handleDateIncrement}
                 />
             </View>

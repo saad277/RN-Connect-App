@@ -153,13 +153,24 @@ const Home = (props) => {
                 showsVerticalScrollIndicator={false}
             >
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={() => setFeelingModal(true)}>
-                        <Icon
-                            source={require("../../assets/icons/smile-add.png")}
-                            width={34}
-                            height={34}
-                        />
-                    </TouchableOpacity>
+                    <View style={{ flexDirection: "row", alignItems: "center" }}>
+                        <TouchableOpacity onPress={() => setFeelingModal(true)}>
+                            <Icon
+                                source={require("../../assets/icons/smile-add.png")}
+                                width={34}
+                                height={34}
+                            />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity onPress={() => navigation.navigate(APP_ROUTES.PROFILE)}>
+                            <Icon
+                                source={require("../../assets/avatar.png")}
+                                width={20}
+                                height={20}
+                                style={{ borderRadius: 20 / 2, marginTop: 8 }}
+                            />
+                        </TouchableOpacity>
+                    </View>
 
                     <Text color={AppColors.PrimaryBlue} size={17}>
                         {selected === FILTERS.DAILY ? "AIR4ME" : "FLAIR"}

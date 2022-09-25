@@ -13,7 +13,9 @@ const Icon = (props) => {
     );
 
     return onPress ? (
-        <TouchableOpacity onPress={onPress}>{renderImage()}</TouchableOpacity>
+        <TouchableOpacity style={{ padding: 20 }} onPress={onPress}>
+            {renderImage()}
+        </TouchableOpacity>
     ) : (
         renderImage()
     );
