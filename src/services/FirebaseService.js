@@ -9,7 +9,16 @@ class FirebaseService {
     static createUser = (email = "", password = "") => {
         return auth()
             .createUserWithEmailAndPassword(email, password)
-            .then(() => {
+            .then(async () => {
+                await auth().currentUser.sendEmailVerification({
+                    handleCodeInApp: true,
+                    url: "https://connect.page.link",
+                    android: {
+                        installApp: true,
+                        packageName: "com.connectapp"
+                    }
+                });
+
                 return Promise.resolve(true);
             })
             .catch((error) => {
