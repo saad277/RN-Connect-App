@@ -24,11 +24,34 @@ const DateFilter = (props) => {
     const { secondDate = false, date, setDate, filter } = props;
 
     const handleDateIncrement = () => {
+        if (filter === FILTERS.MONTHLY) {
+            let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+            let incDate = date.getDate();
+            let dif = lastDay - incDate;
+
+            const result = new Date(
+                new Date(date).setDate(new Date(date).getDate() + ((dif && dif + 1) || 1))
+            );
+            setDate(result);
+            return;
+        }
+
         let val = filter === FILTERS.WEEKLY ? 7 : 1;
         const result = new Date(new Date(date).setDate(new Date(date).getDate() + val));
         setDate(result);
     };
     const handleDateDecrement = () => {
+        if (filter === FILTERS.MONTHLY) {
+            let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+            let incDate = date.getDate();
+            let dif = lastDay - incDate;
+            const result = new Date(
+                new Date(date).setDate(new Date(date).getDate() - ((dif && dif + 1) || 1))
+            );
+            setDate(result);
+            return;
+        }
+
         let val = filter === FILTERS.WEEKLY ? 7 : 1;
         const result = new Date(new Date(date).setDate(new Date(date).getDate() - val));
         setDate(result);

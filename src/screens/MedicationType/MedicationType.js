@@ -5,6 +5,8 @@ import { AppColors } from "../../style";
 
 import { Header } from "../../components/Header";
 import { Text } from "../../components/Text";
+import { Button } from "../../components/Button";
+import { APP_ROUTES } from "../../routes";
 
 const Card = () => {
     return (
@@ -44,7 +46,7 @@ const Card = () => {
     );
 };
 
-const MedicationType = () => {
+const MedicationType = ({ navigation }) => {
     return (
         <ScrollView
             keyboardShouldPersistTaps="handled"
@@ -66,6 +68,12 @@ const MedicationType = () => {
 
                 <Card />
                 <Card />
+
+                <Button
+                    onPress={() => navigation.navigate(APP_ROUTES.ACTIVATE_DEVICE)}
+                    containerStyles={{ marginHorizontal: 20, marginBottom: 10 }}
+                    text="Connect"
+                />
             </View>
         </ScrollView>
     );
